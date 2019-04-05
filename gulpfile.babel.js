@@ -42,7 +42,6 @@ import uglify from 'gulp-uglify';
 
 // Utility related plugins.
 import browserSync from 'browser-sync';
-import del from 'del';
 import lineec from 'gulp-line-ending-corrector';
 import notify from 'gulp-notify';
 import plumber from 'gulp-plumber';
@@ -115,9 +114,6 @@ sassLinter.description = 'Lint through all our SASS/SCSS files so our code is co
  *    7. Injects CSS or reloads the browser via server
  */
 export const css = ( done ) => {
-	// Clean up old files.
-	del( 'css/*' );
-
 	src( 'src/scss/wp-*.scss', { sourcemaps: true } )
 		.pipe( plumber( errorHandler ) )
 		.pipe( sass( { outputStyle: 'compressed' } ).on( 'error', sass.logError ) )
@@ -180,9 +176,6 @@ jsLint.description = 'JS linter task to keep our code consistent.';
  *     4. Uglifes/Minifies the JS file and generates *.min.js
  */
 export const js = () => {
-	// Clean up old files.
-	del( 'js/*' );
-
 	return src( 'src/js/*.js', {
 			sourcemaps: true,
 			since: lastRun( 'js' ) // Only run on changed files.
