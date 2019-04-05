@@ -87,8 +87,8 @@ class NUSA_Theme_Setup {
 	 * Enqueues the necessary css and js files when the WordPress admin is loaded.
 	 */
 	public function enqueue_admin_assets() {
-		wp_enqueue_style( 'nusa', get_stylesheet_directory_uri() . '/css/wp-admin.min.css', array(), filemtime( get_template_directory() . '/css/wp-admin.min.css' ) );
-		wp_enqueue_script( 'nusa', get_stylesheet_directory_uri() . '/js/wp-admin.min.js', array( 'jquery', 'media-upload' ), filemtime( get_template_directory() . '/js/wp-admin.min.js' ), true );
+		wp_enqueue_style( 'nusa', get_stylesheet_directory_uri() . '/assets/css/wp-admin.min.css', array(), filemtime( get_template_directory() . '/assets/css/wp-admin.min.css' ) );
+		wp_enqueue_script( 'nusa', get_stylesheet_directory_uri() . '/assets/js/wp-admin.min.js', array( 'jquery', 'media-upload' ), filemtime( get_template_directory() . '/assets/js/wp-admin.min.js' ), true );
 	}
 
 	/**
@@ -100,10 +100,10 @@ class NUSA_Theme_Setup {
 		$theme_path = get_template_directory();
 		$theme_uri  = get_stylesheet_directory_uri();
 
-		wp_enqueue_style( 'nusa', $theme_uri . '/css/theme.min.css', array(), filemtime( $theme_path . '/css/theme.min.css' ) );
+		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/theme.min.css', array(), filemtime( $theme_path . '/assets/css/theme.min.css' ) );
 
-		wp_enqueue_script( 'vendor-scripts', $theme_uri . '/js/vendor.min.js', array( 'jquery' ), filemtime( $theme_path . '/js/vendor.min.js' ), true );
-		wp_enqueue_script( 'nusa', $theme_uri . '/js/theme.min.js', array( 'jquery', 'vendor-scripts' ), filemtime( $theme_path . '/js/theme.min.js' ), true );
+		wp_enqueue_script( 'vendor-scripts', $theme_uri . '/assets/js/vendor.min.js', array( 'jquery' ), filemtime( $theme_path . '/assets/js/vendor.min.js' ), true );
+		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', array( 'jquery', 'vendor-scripts' ), filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
 	}
 
 	/**
