@@ -122,7 +122,7 @@ export const css = ( done ) => {
 		.pipe( plumber( errorHandler ) )
 		.pipe( sass( { outputStyle: 'compressed' } ).on( 'error', sass.logError ) )
 		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( dest( './css', { sourcemaps: '.' } ) );
+		.pipe( dest( './assets/css', { sourcemaps: '.' } ) );
 
 	src( [
 			'src/scss/*.scss',
@@ -145,7 +145,7 @@ export const css = ( done ) => {
 		} ) )
 		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( dest( './css', { sourcemaps: '.' } ) )
+		.pipe( dest( './assets/css', { sourcemaps: '.' } ) )
 		.pipe( server.stream( {
 			match: '**/*.css' // Sourcemap is in stream so match for actual CSS files
 		} ) );
@@ -198,7 +198,7 @@ export const js = () => {
 		.pipe( uglify() )
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-		.pipe( dest( './js', { sourcemaps: '.' } ) )
+		.pipe( dest( './assets/js', { sourcemaps: '.' } ) )
 		.pipe( server.reload( {
 			match: '**/*.js', // Sourcemap is in stream so match for actual JS files
 			stream: true
