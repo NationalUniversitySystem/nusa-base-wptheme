@@ -1,0 +1,40 @@
+{
+  "name": "nusa",
+  "description": "A custom WordPress theme designed and developed specifically for NUSA.",
+  "version": "1.0.0",
+  "author": "National University System Agency",
+  "homepage": "https://www.nusagency.org/",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "babel-eslint": "^10.0.1",
+    "browser-sync": "^2.26.3",
+    "del": "^4.1.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-include": "^2.3.1",
+    "gulp-line-ending-corrector": "^1.0.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
