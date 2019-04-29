@@ -14,6 +14,22 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 
 ---
 
+## Available Gulp tasks:
+*Note: You can run `npx gulp --tasks --depth=0` in the command line for a task list and information about them.* :scream:
+
+- `sassLinter` - Lints the SASS files to keep the team working on the project consistent and avoid conflicts.
+- `css` - Run the processing of all SASS files -> CSS to deliver to the user.
+- `jsLint` - Lint the JS files with [ESLint](https://eslint.org/) so that our code is consistent and our team uses up to date code standards.
+- `js` - Process and compile the JavaScript files into our `/assets/` folder for delivery.
+- `styles` - Executes CSS related tasks in **series** order (`sassLinter` -> `css`).
+- `scripts` - Executes JavaScript related tasks in **series** order (`jsLint` -> `js`).
+- `build` - Executes the `styles` and `scripts` tasks in **parallel** order.
+- `dev` - Runs the `build` task, `browsersync` task, and watches files to continuously run the tasks above when the appropriate files are updated (Defined as the `default` task as well).
+  - The `browsersync` task is not exported so that it can be called via the command line.
+
+
+---
+
 ## Must includes:
 - Gulp file setup
 - Basic theme setup in `./inc/class-nusa-theme-setup`
