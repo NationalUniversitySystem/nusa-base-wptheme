@@ -20,7 +20,7 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 - `sassLinter` - Lints the SASS files to keep the team working on the project consistent and avoid conflicts.
 - `css` - Run the processing of all SASS files -> CSS to deliver to the user.
 - `jsLint` - Lint the JS files with [ESLint](https://eslint.org/) so that our code is constent and our team uses up to date code standards.
-- `js` - Process and compile the JavaScript files into our `/assets/` folder delivery.
+- `js` - Process and compile the JavaScript files into our `/assets/` folder for delivery.
 - `styles` - Executes CSS related tasks in **series** order (`sassLinter` -> `css`).
 - `scripts` - Executes JavaScript related tasks in **series** order (`jsLint` -> `js`).
 - `build` - Executes the `styles` and `scripts` tasks in **parallel** order.
