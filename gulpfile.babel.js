@@ -26,7 +26,7 @@ import config from './gulp.config.js';
  *
  * Load gulp plugins and passing them semantic names.
  */
-import { dest, parallel, src, series, lastRun, watch } from 'gulp';
+import { dest, parallel, src, series, watch } from 'gulp';
 
 // CSS related plugins.
 import autoprefixer from 'gulp-autoprefixer';
@@ -177,8 +177,7 @@ jsLint.description = 'JS linter task to keep our code consistent.';
  */
 export const js = () => {
 	return src( 'src/js/*.js', {
-			sourcemaps: true,
-			since: lastRun( 'js' ) // Only run on changed files.
+			sourcemaps: true
 		} )
 		.pipe( plumber( errorHandler ) )
 		.pipe( include( {
