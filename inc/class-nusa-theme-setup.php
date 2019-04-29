@@ -314,11 +314,13 @@ class NUSA_Theme_Setup {
 	}
 
 	/**
-	 * Set Theme Options
+	 * Set Theme Support
 	 *
-	 * Configures the necessary WordPress theme options once the theme is activated.
+	 * Configures the necessary WordPress theme supports once the theme is activated.
+	 *
+	 * Hooked to after_setup_theme in functions.php file.
 	 */
-	public static function set_theme_options() {
+	public static function theme_setup() {
 		/**
 		 * Enable support for Post Thumbnails on posts and pages.
 		 * See: https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
