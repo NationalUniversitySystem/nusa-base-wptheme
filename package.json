@@ -1,6 +1,6 @@
 {
   "name": "nusa",
-  "description": "A custom WordPress theme designed and developed specifically for NUSA.",
+  "description": "A custom base WordPress theme designed and developed specifically for NUSA sites.",
   "version": "1.0.0",
   "author": "National University System Agency",
   "homepage": "https://www.nusagency.org/",
@@ -15,6 +15,7 @@
     "@babel/register": "^7.5.5",
     "babel-eslint": "^10.0.2",
     "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
     "eslint-config-wordpress": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
