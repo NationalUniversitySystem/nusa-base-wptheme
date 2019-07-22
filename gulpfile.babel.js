@@ -42,6 +42,7 @@ import uglify from 'gulp-uglify';
 
 // Utility related plugins.
 import browserSync from 'browser-sync';
+import del from 'del';
 import lineec from 'gulp-line-ending-corrector';
 import notify from 'gulp-notify';
 import plumber from 'gulp-plumber';
@@ -63,22 +64,28 @@ const errorHandler = error => {
 };
 
 /**
- * Task: `browser-sync`.
+ * Task: `browsersync`.
  *
  * Live Reloads, CSS injections, Localhost tunneling.
  * @link http://www.browsersync.io/docs/options/
  *
+ * BrowserSync options can be overwritten by gulp.config.local.js file.
+ *
  * @param {Mixed} done Done.
  */
-const browsersync = done => {
-	server.init( {
-		proxy: config.projectURL,
+ const browsersync = done => {
+	const baseServerConfig = {
 		open: false,
 		injectChanges: true,
 		watchEvents: [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ]
-	} );
+	};
+
+	const serverConfig = { ...baseServerConfig, ...config.serverConfig };
+
+	server.init( serverConfig );
 	done();
 };
+browsersync.description = 'Load browser sync for local development.';
 
 // Helper function to allow browser reload with Gulp 4.
 const reload = done => {
@@ -94,7 +101,7 @@ const reload = done => {
  */
 export const sassLinter = () => {
 	return src( 'src/scss/**/*.scss' )
-		.pipe( plumber( { errorHandler: errorHandler } ) )
+		.pipe( plumber( errorHandler ) )
 		.pipe( sassLint() )
 		.pipe( sassLint.format() )
 		.pipe( sassLint.failOnError() );
@@ -114,6 +121,8 @@ sassLinter.description = 'Lint through all our SASS/SCSS files so our code is co
  *    7. Injects CSS or reloads the browser via server
  */
 export const css = ( done ) => {
+	del( './assets/css/*' );
+
 	src( 'src/scss/wp-*.scss', { sourcemaps: true } )
 		.pipe( plumber( errorHandler ) )
 		.pipe( sass( { outputStyle: 'compressed' } ).on( 'error', sass.logError ) )
@@ -148,15 +157,15 @@ export const css = ( done ) => {
 
 	done();
 };
-css.description = 'Compiles Sass, Autoprefixes it and Minifies CSS.';
+css.description = 'Compress, clean, etc our theme CSS files.';
 
 /**
- * Task: `sassLinter`.
+ * Task: `jsLinter`.
  * This task does the following:
  *    1. Gets all our theme files
  *    2. Lints theme files to keep code up to standards and consistent
  */
-export const jsLint = () => {
+export const jsLinter = () => {
 	return src( [
 			'./src/js/**/*.js',
 			'!src/js/vendor/**'
@@ -164,7 +173,7 @@ export const jsLint = () => {
 		.pipe( eslint() )
 		.pipe( eslint.format() );
 };
-jsLint.description = 'JS linter task to keep our code consistent.';
+jsLinter.description = 'Linter for JavaScript';
 
 /**
  * Task: `js`.
@@ -176,6 +185,9 @@ jsLint.description = 'JS linter task to keep our code consistent.';
  *     4. Uglifes/Minifies the JS file and generates *.min.js
  */
 export const js = () => {
+	// Clean up old files.
+	del( './assets/js/*' );
+
 	return src( 'src/js/*.js', {
 			sourcemaps: true
 		} )
@@ -199,7 +211,7 @@ export const js = () => {
 js.description = 'Run all JS compression and sourcemap work.';
 
 export const styles  = series( sassLinter, css );
-export const scripts = series( jsLint, js );
+export const scripts = series( jsLinter, js );
 export const build   = parallel( styles, scripts );
 
 /**
@@ -210,6 +222,6 @@ export const dev = series( build, browsersync, () => {
 	watch( './src/scss/**/*.scss', styles ); // Reload on SCSS file changes.
 	watch( './src/js/**/*.js', scripts ); // Reload on JS file changes.
 } );
-dev.description = 'Watches for file changes and runs specific tasks.';
+dev.description = 'Start up our full dev workflow.';
 
 export default dev;
