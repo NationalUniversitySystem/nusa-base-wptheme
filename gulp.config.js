@@ -8,8 +8,9 @@
 // Define the default project configuration.
 let projectConfig = {
 	// Local project URL of your already running WordPress site. Could be something like wpgulp.local or localhost:3000 depending upon your local WordPress setup.
-	projectURL: 'nusa.loc',
-
+	serverConfig: {
+		proxy: 'nusa.loc'
+	},
 	// Browsers you care about for autoprefixing. Browserlist https://github.com/ai/browserslist
 	// The following list is set as per WordPress requirements.
 	// TODO: switch browserlist to npx browserslist-ga data.
