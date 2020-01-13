@@ -35,7 +35,7 @@
 			if ( '' !== utmValue ) {
 				setInputValue( '.' + utmName, utmValue, form );
 			}
-		});
+		} );
 
 		cookieParamSet.forEach( cookieParamName => {
 			let cookieValue = getCookie( cookieParamName );

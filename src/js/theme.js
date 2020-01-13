@@ -1,5 +1,6 @@
 //=require theme/functions.js
 //=require theme/navigation.js
+//=require theme/lazyload.js
 //=require theme/skip-link-focus-fix.js
 //=require theme/youtube-embed.js
 

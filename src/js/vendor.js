@@ -1,1 +1,1 @@
-//=require vendor/lazyload.js
+//=require vanilla-lazyload/dist/lazyload.min.js

@@ -107,4 +107,4 @@
 			document.cookie = 'track1=' + cTrack1 + '; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
 		}
 	}
-})();
+} )();
