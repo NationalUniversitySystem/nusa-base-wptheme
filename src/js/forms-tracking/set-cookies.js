@@ -1,5 +1,5 @@
-/* global getDomain, getCookie, getParameterByName */
 /* eslint-disable complexity */
+import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 // Setup all process trackers
 ( function() {
 	var cookieDomain = getDomain();

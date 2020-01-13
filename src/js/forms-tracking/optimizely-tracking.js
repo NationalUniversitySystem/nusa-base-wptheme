@@ -1,4 +1,4 @@
-/* global setInputValue */
+import { setInputValue } from '../theme/functions';
 /**
  * Fetch the optimizely info we want to track and place it into our forms to track,
  * if the appropriate fields exist.

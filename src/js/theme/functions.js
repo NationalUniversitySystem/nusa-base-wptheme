@@ -2,16 +2,16 @@
 /**
  * Gets the parameter from the URL
  */
-function getParameterByName( parameterName ) {
+export const getParameterByName = function( parameterName ) {
 	parameterName = parameterName.replace( /[[]/, '\\[' ).replace( /[\]]/, '\\]' );
 
 	var regex   = new RegExp( '[\\?&]' + parameterName + '=([^&#]*)' ),
 		results = regex.exec( location.search );
 
 	return results === null ? '' : decodeURIComponent( results[1].replace( /\+/g, ' ' ) );
-}
+};
 
-function getCookie( cookieName ) {
+export const getCookie = function( cookieName ) {
 	var name        = cookieName + '=';
 	var cookieArray = document.cookie.split( ';' );
 
@@ -25,9 +25,9 @@ function getCookie( cookieName ) {
 		}
 	}
 	return '';
-}
+};
 
-function getDomain() {
+export const getDomain = function() {
 	var hostName = location.host;
 	var domain = hostName;
 
@@ -40,7 +40,7 @@ function getDomain() {
 	}
 
 	return domain;
-}
+};
 
 /**
  * Set the value of an input element
@@ -49,7 +49,7 @@ function getDomain() {
  * @param {string} inputValue Value we are setting for the in put.
  * @param {dom element} inputParent The parent of the input in order to narrow the selection (should probably be a form dom element).
  */
-function setInputValue( inputSelector, inputValue, inputParent ) {
+export const setInputValue = function( inputSelector, inputValue, inputParent ) {
 	if ( 'undefined' === typeof inputParent ) {
 		inputParent = document;
 	}
@@ -71,14 +71,14 @@ function setInputValue( inputSelector, inputValue, inputParent ) {
 
 	// Set the value.
 	element.value = inputValue;
-}
+};
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
 // Credit to: https://davidwalsh.name/javascript-debounce-function
-function debounce( func, wait, immediate ) {
+export const debounce = function( func, wait, immediate ) {
 	var timeout;
 	return function() {
 		var context = this;
@@ -96,4 +96,4 @@ function debounce( func, wait, immediate ) {
 			func.apply( context, args );
 		}
 	};
-}
+};
