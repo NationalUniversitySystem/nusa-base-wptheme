@@ -1,0 +1,105 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "plugins": [
+    "stylelint-declaration-use-variable",
+    "stylelint-order",
+    "stylelint-scss"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "scss/comment-no-loud": true,
+    "scss/at-extend-no-missing-placeholder": true,
+    "scss/at-import-no-partial-leading-underscore": true,
+    "scss/at-import-partial-extension": "never",
+    "scss/at-function-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+    "scss/at-mixin-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+    "scss/dollar-variable-pattern": "^[a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+    "scss/at-else-empty-line-before": "never",
+    "scss/at-else-if-parentheses-space-before": "always",
+    "sh-waqar/declaration-use-variable": [ [
+      "color", "font-family", {
+        "ignoreValues": [
+          "transparent",
+          "inherit"
+        ]
+      } ] ],
+    "declaration-bang-space-before": "always",
+    "declaration-bang-space-after": "never",
+    "color-named": "never",
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "except": "first-nested",
+        "ignore": "after-comment"
+      }
+    ],
+    "block-no-empty": true,
+    "no-eol-whitespace": true,
+    "no-empty-first-line": true,
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-no-invalid-hex": true,
+    "declaration-no-important": true,
+    "max-empty-lines": 1,
+    "indentation": 2,
+    "number-leading-zero": "never",
+    "no-duplicate-selectors": true,
+    "selector-pseudo-element-colon-notation": "double",
+    "shorthand-property-no-redundant-values": true,
+    "selector-list-comma-newline-after": "always",
+    "function-comma-space-after": "always",
+    "function-comma-space-before": "never",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "function-parentheses-space-inside": "never",
+    "string-quotes": "single",
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-block-no-redundant-longhand-properties": true,
+    "number-no-trailing-zeros": true,
+    "function-url-quotes": "always",
+    "function-url-scheme-blacklist": [
+      "/^ftp/",
+      "/^http/"
+    ],
+    "length-zero-no-unit": true,
+    "property-no-unknown": true,
+    "selector-no-qualifying-type": [ true, {
+      "ignore": [ "attribute", "class" ]
+      } ],
+    "no-missing-end-of-source-newline": true,
+    "selector-max-id": 0,
+    "declaration-block-semicolon-newline-after": "always-multi-line",
+    "selector-attribute-operator-space-before": "never",
+    "selector-attribute-operator-space-after": "never",
+    "block-opening-brace-space-before": "always",
+    "declaration-property-value-blacklist": {
+      "/^border$/": [ "0" ]
+    },
+    "at-rule-blacklist": [ "debug" ],
+    "max-nesting-depth": [
+      3,
+      {
+        "ignore": [ "blockless-at-rules" ]
+      }
+    ],
+    "unit-whitelist": [
+      "ch", "em", "ex", "rem",
+      "cm", "in", "mm", "pc", "pt", "px", "q",
+      "vh", "vw", "vmin", "vmax",
+      "deg", "grad", "rad", "turn",
+      "ms", "s",
+      "Hz", "kHz",
+      "dpi", "dpcm", "dppx",
+      "%"
+    ],
+    "selector-max-compound-selectors": 3,
+    "at-rule-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "no-descending-specificity": null,
+    "no-empty-source": null
+  }
+}
