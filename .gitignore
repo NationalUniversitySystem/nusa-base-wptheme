@@ -1,0 +1,13 @@
+# Ignore temporary OS files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node Modules
+node_modules
+
+# Individual gulp configs
+gulp.config.local.js
