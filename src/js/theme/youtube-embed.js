@@ -1,8 +1,7 @@
-( function() {
-	var ytVids = document.querySelectorAll( '.youtube-embed' );
+( function( d ) {
+	const ytVids = d.querySelectorAll( '.youtube-embed' );
 
 	ytVids.forEach( function( ytVid ) {
-
 		// Make sure the data attribute is present
 		if ( ! ytVid.dataset.ytid ) {
 			return;
@@ -16,46 +15,56 @@
 		];
 
 		// Build out markup that will be inserted into yt-embed div
-		var thumbnail       = document.createElement( 'div' );
-		var thumbnailImage  = document.createElement( 'div' );
-		var thumbnailButton = document.createElement( 'div' );
+		var thumbnailButton = d.createElement( 'div' );
 
-		thumbnail.className = 'thumbnail';
-		thumbnailImage.className = 'thumbnail__image';
+		ytVid.classList.add( 'thumbnail' );
 		thumbnailButton.className = 'thumbnail__button';
 
 		// Create image to load
-		var imageToLoad      = 0;
-		var downloadingImage = new Image();
+		var imageToLoad         = 0;
+		var downloadingImage    = new Image();
 
 		// onload event has to be defined/attached to the new image before we set the src
 		downloadingImage.onload = function() {
-
 			// Check if YT returned it's 404 image, and if it did try to load the HQ option
 			if ( this.naturalHeight <= 90 ) {
 				imageToLoad++;
 			}
 
-			thumbnailImage.style.backgroundImage = 'url("' + imageSources[ imageToLoad ] + '")';
-			thumbnail.insertBefore( thumbnailButton, thumbnail.firstChild );
-			thumbnail.insertBefore( thumbnailImage, thumbnail.firstChild );
-			ytVid.insertBefore( thumbnail, ytVid.firstChild );
+			ytVid.style.backgroundImage = 'url("' + imageSources[imageToLoad] + '")';
+			ytVid.insertBefore( thumbnailButton, ytVid.firstChild );
 		};
 
-		downloadingImage.src = imageSources[ imageToLoad ];
+		downloadingImage.src = imageSources[imageToLoad];
 
-		ytVid.addEventListener( 'click', function() {
-			var iframe = document.createElement( 'iframe' );
+		ytVid.addEventListener( 'click', function( event ) {
+			event.preventDefault();
+			pauseAllYtVideos();
+
+			var iframe = d.createElement( 'iframe' );
 
 			iframe.setAttribute( 'height', '100%' );
 			iframe.setAttribute( 'width', '100%' );
 			iframe.setAttribute( 'frameborder', '0' );
 			iframe.setAttribute( 'allowfullscreen', '' );
 			iframe.setAttribute( 'allow', 'autoplay; encrypted-media' );
-			iframe.setAttribute( 'src', 'https://www.youtube.com/embed/' + this.dataset.ytid + '?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1' );
+			iframe.setAttribute( 'src', 'https://www.youtube.com/embed/' + this.dataset.ytid + '?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&enablejsapi=1' );
 
 			this.innerHTML = '';
+			this.style.backgroundImage = 'none';
 			this.appendChild( iframe );
 		} );
 	} );
-} )();
+
+	function pauseAllYtVideos() {
+		const iframes = d.querySelectorAll( 'iframe, embed' ) ;
+
+		iframes.forEach( ( iframe ) => {
+			iframe.contentWindow.postMessage(
+				'{"event":"command","func":"pauseVideo","args":""}',
+				'*'
+			);
+		} );
+	}
+} )( document );
+

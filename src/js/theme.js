@@ -3,5 +3,7 @@
 //=require theme/skip-link-focus-fix.js
 //=require theme/youtube-embed.js
 
-//=require forms/set-cookies.js
-//=require forms/set-forms-fields.js
+//=require forms-tracking/set-cookies.js
+//=require forms-tracking/set-forms-fields.js
+//=require forms-tracking/optimizely-tracking.js
+//=require forms-tracking/optimizely-attributes.js
