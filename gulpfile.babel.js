@@ -73,7 +73,7 @@ const errorHandler = error => {
  *
  * @param {Mixed} done Done.
  */
- const browsersync = done => {
+const browsersync = done => {
 	const baseServerConfig = {
 		open: false,
 		injectChanges: true,
@@ -136,8 +136,7 @@ export const css = ( done ) => {
 		.pipe( plumber( errorHandler ) )
 		.pipe( sass( { outputStyle: 'expanded' } ).on( 'error', sass.logError ) )
 		.pipe( autoprefixer( {
-			cascade: false,
-			browsers: config.BROWSERS_LIST
+			cascade: false
 		} ) )
 		.pipe( cleanCSS( {
 			level: {

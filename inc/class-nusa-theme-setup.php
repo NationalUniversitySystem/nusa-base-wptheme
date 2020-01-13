@@ -37,6 +37,8 @@ class NUSA_Theme_Setup {
 		add_action( 'wp_head', array( $this, 'add_theme_color' ) );
 		add_action( 'init', array( $this, 'add_excerpts' ), 100 );
 		add_action( 'send_headers', array( $this, 'security_headers' ), 1 );
+		add_action( 'post-plupload-upload-ui', [ $this, 'upload_suggestions_message' ] );
+		add_action( 'post-html-upload-ui', [ $this, 'upload_suggestions_message' ] );
 	}
 
 	/**
@@ -49,6 +51,8 @@ class NUSA_Theme_Setup {
 		add_filter( 'post_class', array( $this, 'post_class' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'fix_the_excerpt' ) );
 		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_data_attributes' ), 10, 2 );
+		add_filter( 'navigation_markup_template', [ $this, 'aria_nav' ] );
+		add_filter( 'wp_handle_upload_prefilter', [ $this, 'limit_image_size' ] );
 	}
 
 	/**
@@ -60,12 +64,18 @@ class NUSA_Theme_Setup {
 		add_action( 'wp_print_styles', array( $this, 'dequeue_block_styles' ), 100 );
 		add_action( 'do_feed_rss2_comments', array( $this, 'disable_feeds' ), 1 );
 		add_action( 'do_feed_atom_comments', array( $this, 'disable_feeds' ), 1 );
+
+		// Remove emojis.
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
 		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
 		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+		// Remove pingback and remote-access links.
+		remove_action( 'wp_head', 'rsd_link' );
+		remove_action( 'wp_head', 'wlwmanifest_link' );
 	}
 
 	/**
@@ -210,6 +220,20 @@ class NUSA_Theme_Setup {
 	}
 
 	/**
+	 * Add suggestions message in the upload files screens.
+	 */
+	public function upload_suggestions_message() {
+		?>
+		<h3>Uploading Files Guide</h3>
+		<p class="upload-html-bypass hide-if-no-js">Here are a few options to reduce the size of images/files before uploading them (please always do this to help load the site faster for visitors!!).</p>
+		<ul>
+			<li><a href="https://compressor.io/" target="_blank">Compressor.io - Compress all your images with this site.</a></li>
+			<li><a href="https://smallpdf.com/" target="_blank">SmallPDF.com - Compress those PDFs as well for clients or on page display.</a></li>
+		</ul>
+		<?php
+	}
+
+	/**
 	 * Body Class
 	 *
 	 * Filters the list of CSS body classes for the current post or page.
@@ -249,6 +273,12 @@ class NUSA_Theme_Setup {
 				$classes[] = $page_slug_class;
 			}
 		}
+
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['ab-test'] ) ) {
+			$classes[] = sanitize_text_field( wp_unslash( $_GET['ab-test'] ) );
+		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		return $classes;
 	}
@@ -348,4 +378,48 @@ class NUSA_Theme_Setup {
 		// Add theme support for Custom Logo.
 		add_theme_support( 'custom-logo' );
 	}
+
+	/**
+	 * Add Aria -Label to Pagination
+	 *
+	 * @param string $template The default template.
+	 */
+	public function aria_nav( $template ) {
+		return str_replace( 'role="navigation"', 'aria-label="Pagination"', $template );
+	}
+
+	/**
+	 * Limits the dimensions of an uploaded image
+	 *
+	 * @param  array $file Information about the attempted uploaded file.
+	 * @return array Contains the information of the uploaded file or an error message with the data
+	 */
+	public function limit_image_size( $file ) {
+		$image             = getimagesize( $file['tmp_name'] );
+		$img_display_limit = 350; // Kilobytes.
+		$img_size_limit    = $img_display_limit * 1024;
+		$pdf_display_limit = 10; // Megabytes.
+		$pdf_size_limit    = $pdf_display_limit * 1000 * 1024;
+		$size_output       = round( $file['size'] / 1024 );
+
+		if ( false !== strpos( $file['type'], 'image' ) ) {
+			$maximum      = [
+				'width'  => '2000',
+				'height' => '2000',
+			];
+			$image_width  = $image[0];
+			$image_height = $image[1];
+
+			if ( $image_width > $maximum['width'] || $image_height > $maximum['height'] ) {
+				$file['error'] = "Image dimensions are too large. Maximum size is {$maximum['width']} by {$maximum['height']} pixels. Uploaded image is $image_width by $image_height pixels.";
+			} elseif ( strpos( $file['type'], 'image' ) !== false && $file['size'] > $img_size_limit ) {
+				$file['error'] = "Image size must be smaller than $img_display_limit KB. Uploaded image is $size_output KB.";
+			}
+		} elseif ( false !== strpos( $file['type'], 'pdf' ) && $file['size'] > $pdf_size_limit ) {
+			$file['error'] = "File size must be smaller than $pdf_display_limit MB.";
+		}
+
+		return $file;
+	}
+
 }
