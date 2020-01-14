@@ -18,10 +18,10 @@
 		<?php
 		the_content();
 
-		wp_link_pages( array(
+		wp_link_pages([
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nusa' ),
 			'after'  => '</div>',
-		) );
+		] );
 		?>
 	</div><!-- .entry-content -->
 
@@ -33,11 +33,11 @@
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
 						__( 'Edit <span class="screen-reader-text">%s</span>', 'nusa' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
+						[
+							'span' => [
+								'class' => [],
+							],
+						]
 					),
 					get_the_title()
 				),

@@ -17,14 +17,14 @@
  * @uses nusa_header_style()
  */
 function nusa_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'nusa_custom_header_args', array(
+	add_theme_support( 'custom-header', apply_filters( 'nusa_custom_header_args', [
 		'default-image'      => '',
 		'default-text-color' => '000000',
 		'width'              => 1000,
 		'height'             => 250,
 		'flex-height'        => true,
 		'wp-head-callback'   => 'nusa_header_style',
-	) ) );
+	] ) );
 }
 add_action( 'after_setup_theme', 'nusa_custom_header_setup' );
 

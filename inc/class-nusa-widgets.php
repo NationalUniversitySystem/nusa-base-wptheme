@@ -20,8 +20,8 @@ class NUSA_Widgets {
 	 * Using construct function to add any actions and filters
 	 */
 	public function __construct() {
-		add_action( 'widgets_init', array( $this, 'register_sidebars' ) );
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		add_action( 'widgets_init', [ $this, 'register_sidebars' ] );
+		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
 		add_action( 'admin_enqueue_scripts', function() {
 			wp_enqueue_media();
 		} );
@@ -46,7 +46,7 @@ class NUSA_Widgets {
 	 * Adds the sidebars used by this theme to WordPress.
 	 */
 	public function register_sidebars() {
-		register_sidebar( array(
+		register_sidebar( [
 			'name'          => __( 'Sidebar', 'nusa' ),
 			'id'            => 'sidebar-1',
 			'description'   => __( 'Add widgets here.', 'nusa' ),
@@ -54,7 +54,7 @@ class NUSA_Widgets {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		) );
+		] );
 	}
 
 	/**

@@ -31,12 +31,12 @@ class NUSA_Theme_Setup {
 	 * Defines all the WordPress actions used by this theme.
 	 */
 	private function add_actions() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 99 );
-		add_action( 'script_loader_tag', array( $this, 'do_script_loader_tag' ), 10, 3 );
-		add_action( 'wp_head', array( $this, 'add_theme_color' ) );
-		add_action( 'init', array( $this, 'add_excerpts' ), 100 );
-		add_action( 'send_headers', array( $this, 'security_headers' ), 1 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ], 99 );
+		add_action( 'script_loader_tag', [ $this, 'do_script_loader_tag' ], 10, 3 );
+		add_action( 'wp_head', [ $this, 'add_theme_color' ] );
+		add_action( 'init', [ $this, 'add_excerpts' ], 100 );
+		add_action( 'send_headers', [ $this, 'security_headers' ], 1 );
 		add_action( 'post-plupload-upload-ui', [ $this, 'upload_suggestions_message' ] );
 		add_action( 'post-html-upload-ui', [ $this, 'upload_suggestions_message' ] );
 	}
@@ -47,10 +47,10 @@ class NUSA_Theme_Setup {
 	 * Defines all the WordPress filters used by this theme.
 	 */
 	private function add_filters() {
-		add_filter( 'body_class', array( $this, 'body_class' ), 10, 2 );
-		add_filter( 'post_class', array( $this, 'post_class' ) );
-		add_filter( 'get_the_excerpt', array( $this, 'fix_the_excerpt' ) );
-		add_filter( 'wp_kses_allowed_html', array( $this, 'allow_data_attributes' ), 10, 2 );
+		add_filter( 'body_class', [ $this, 'body_class' ], 10, 2 );
+		add_filter( 'post_class', [ $this, 'post_class' ] );
+		add_filter( 'get_the_excerpt', [ $this, 'fix_the_excerpt' ] );
+		add_filter( 'wp_kses_allowed_html', [ $this, 'allow_data_attributes' ], 10, 2 );
 		add_filter( 'navigation_markup_template', [ $this, 'aria_nav' ] );
 		add_filter( 'wp_handle_upload_prefilter', [ $this, 'limit_image_size' ] );
 	}
@@ -61,9 +61,9 @@ class NUSA_Theme_Setup {
 	 * @return void
 	 */
 	private function disable_features() {
-		add_action( 'wp_print_styles', array( $this, 'dequeue_block_styles' ), 100 );
-		add_action( 'do_feed_rss2_comments', array( $this, 'disable_feeds' ), 1 );
-		add_action( 'do_feed_atom_comments', array( $this, 'disable_feeds' ), 1 );
+		add_action( 'wp_print_styles', [ $this, 'dequeue_block_styles' ], 100 );
+		add_action( 'do_feed_rss2_comments', [ $this, 'disable_feeds' ], 1 );
+		add_action( 'do_feed_atom_comments', [ $this, 'disable_feeds' ], 1 );
 
 		// Remove emojis.
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -97,20 +97,7 @@ class NUSA_Theme_Setup {
 	 * Enqueues the necessary css and js files when the WordPress admin is loaded.
 	 */
 	public function enqueue_admin_assets() {
-		wp_enqueue_style( 'nusa', get_stylesheet_directory_uri() . '/assets/css/wp-admin.min.css', array(), filemtime( get_template_directory() . '/assets/css/wp-admin.min.css' ) );
-		wp_enqueue_script( 'nusa', get_stylesheet_directory_uri() . '/assets/js/wp-admin.min.js', array( 'jquery', 'media-upload' ), filemtime( get_template_directory() . '/assets/js/wp-admin.min.js' ), true );
-	}
-
-	/**
-	 * Enqueue Assets
-	 *
-	 * Enqueues the necessary css and js files when the theme is loaded.
-	 */
-	public function enqueue_assets() {
-		$theme_path = get_template_directory();
-		$theme_uri  = get_stylesheet_directory_uri();
-
-		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/theme.min.css', array(), filemtime( $theme_path . '/assets/css/theme.min.css' ) );
+		wp_enqueue_style( 'nusa', get_stylesheet_directory_uri() . '/assets/css/wp-admin.min.css', [], filemtime( $theme_path . '/assets/css/theme.min.css' ) );
 		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', [], filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
 	}
 
@@ -130,16 +117,16 @@ class NUSA_Theme_Setup {
 	 */
 	public function do_script_loader_tag( $tag, $handle, $src ) {
 		// The handles of the enqueued scripts we want to async.
-		$async_scripts = array();
+		$async_scripts = [];
 		if ( in_array( $handle, $async_scripts, true ) ) {
 			return str_replace( ' src', ' async="async" src', $tag );
 		}
 
 		// The handles of the enqueued scripts we want to defer.
-		$defer_scripts = array(
+		$defer_scripts = [
 			'nusa',
 			'wp-embed',
-		);
+		];
 		if ( in_array( $handle, $defer_scripts, true ) ) {
 			return str_replace( ' src', ' defer="defer" src', $tag );
 		}
@@ -239,8 +226,7 @@ class NUSA_Theme_Setup {
 	 * @param array $classes An array of body classes.
 	 * @param array $class   An array of additional classes added to the body.
 	 */
-	public function body_class( $classes = array(), $class = array() ) {
-
+	public function body_class( $classes = [], $class = [] ) {
 		foreach ( $classes as $key => $value ) {
 			// Remove the page ID for security reasons.
 			if ( strpos( $value, 'page-id-' ) !== false || strpos( $value, 'parent-pageid-' ) !== false ) {
@@ -290,7 +276,7 @@ class NUSA_Theme_Setup {
 	 * @param array $class   An array of additional classes added to the post.
 	 * @param int   $post_id The post ID.
 	 */
-	public function post_class( $classes = array(), $class = array(), $post_id = null ) {
+	public function post_class( $classes = [], $class = [], $post_id = null ) {
 
 		foreach ( $classes as $key => $value ) {
 			if ( strpos( $value, 'post-' ) !== false || strpos( $value, 'status-' ) !== false ) {
@@ -356,19 +342,19 @@ class NUSA_Theme_Setup {
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in various locations.
-		register_nav_menus( array(
+		register_nav_menus( [
 			'primary-desktop' => __( 'Main Desktop', 'nusa' ),
 			'primary-footer'  => __( 'Main Footer', 'nusa' ),
-		) );
+		] );
 
 		/**
 		 * Switch default core markup for search form, gallery, and caption to output valid HTML5.
 		 */
-		add_theme_support( 'html5', array(
+		add_theme_support( 'html5', [
 			'search-form',
 			'gallery',
 			'caption',
-		) );
+		] );
 
 		// Allow WordPress to generate the title tag dynamically.
 		add_theme_support( 'title-tag' );

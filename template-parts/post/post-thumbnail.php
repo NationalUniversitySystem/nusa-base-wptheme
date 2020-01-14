@@ -20,11 +20,11 @@ if ( is_singular() ) :
 
 	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 		<?php
-		the_post_thumbnail( 'post-thumbnail', array(
-			'alt' => the_title_attribute( array(
+		the_post_thumbnail( 'post-thumbnail', [
+			'alt' => the_title_attribute( [
 				'echo' => false,
-			) ),
-		) );
+			] ),
+		] );
 		?>
 	</a>
 
