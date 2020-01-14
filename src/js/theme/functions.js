@@ -97,3 +97,26 @@ export const debounce = function( func, wait, immediate ) {
 		}
 	};
 };
+
+/**
+ * Get a specific class based on a comma separated string
+ *
+ * @param classPartial Partial class name to search classList for
+ * @param classList    String of classes
+ */
+export const getClass = function( classPartial, classList ) {
+	// Incase an array is passed in.
+	if ( 'string' === typeof classList ) {
+		classList = classList.split( ' ' );
+	}
+
+	let theClass = '';
+
+	classList.forEach( singleClass => {
+		if ( singleClass.includes( classPartial ) ) {
+			theClass = singleClass;
+		}
+	} );
+
+	return theClass;
+};
