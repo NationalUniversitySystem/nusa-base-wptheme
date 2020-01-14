@@ -97,7 +97,23 @@ class NUSA_Theme_Setup {
 	 * Enqueues the necessary css and js files when the WordPress admin is loaded.
 	 */
 	public function enqueue_admin_assets() {
+		$theme_path = get_template_directory();
+		$theme_uri  = get_stylesheet_directory_uri();
+
 		wp_enqueue_style( 'nusa', get_stylesheet_directory_uri() . '/assets/css/wp-admin.min.css', [], filemtime( $theme_path . '/assets/css/theme.min.css' ) );
+		wp_enqueue_script( 'nusa', get_stylesheet_directory_uri() . '/assets/js/wp-admin.min.js', [ 'jquery', 'media-upload' ], filemtime( $theme_path . '/assets/js/wp-admin.min.js' ), true );
+	}
+
+	/**
+	 * Enqueue Assets
+	 *
+	 * Enqueues the necessary css and js files when the theme is loaded.
+	 */
+	public function enqueue_assets() {
+		$theme_path = get_template_directory();
+		$theme_uri  = get_stylesheet_directory_uri();
+
+		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/theme.min.css', [], filemtime( $theme_path . '/assets/css/theme.min.css' ) );
 		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', [], filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
 	}
 
