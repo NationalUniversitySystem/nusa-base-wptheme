@@ -42,12 +42,13 @@
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
-			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nusa' ); ?></button>
+			<nav id="site-navigation" class="main-navigation mb-10 mt-10">
+				<button class="menu-toggle d-block d-sm-none" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nusa' ); ?></button>
 				<?php
 				wp_nav_menu( [
 					'theme_location' => 'main-menu',
 					'menu_id'        => 'primary-menu',
+					'menu_class'     => 'horizontal-list',
 				] );
 				?>
 			</nav><!-- #site-navigation -->
