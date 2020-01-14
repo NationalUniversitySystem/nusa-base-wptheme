@@ -1,5 +1,5 @@
-/* global getCookie, getParameterByName, setInputValue */
 /* eslint-disable complexity */
+import { getCookie, getParameterByName, setInputValue } from '../theme/functions';
 // Setup all process trackers
 ( function() {
 	const utmParams = [

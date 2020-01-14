@@ -1,5 +1,4 @@
-/* global getCookie, getParameterByName */
-
+import { getCookie, getParameterByName } from '../theme/functions';
 /**
  * Push our UTM parameters to optimizely for tracking and data analysis.
  */

@@ -35,15 +35,14 @@ import sass from 'gulp-sass';
 import sassLint from 'gulp-sass-lint';
 
 // JS related plugins.
-import babel from 'gulp-babel';
 import eslint from 'gulp-eslint';
-import include from 'gulp-include';
-import uglify from 'gulp-uglify';
+import named from 'vinyl-named';
+import webpack from 'webpack-stream';
+import webpackConfig from './webpack.config.js';
 
 // Utility related plugins.
 import browserSync from 'browser-sync';
 import del from 'del';
-import lineec from 'gulp-line-ending-corrector';
 import notify from 'gulp-notify';
 import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
@@ -147,7 +146,6 @@ export const css = ( done ) => {
 				}
 			}
 		} ) )
-		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( dest( './assets/css', { sourcemaps: '.' } ) )
 		.pipe( server.stream( {
@@ -166,9 +164,9 @@ css.description = 'Compress, clean, etc our theme CSS files.';
  */
 export const jsLinter = () => {
 	return src( [
-			'./src/js/**/*.js',
-			'!src/js/vendor/**'
-		] )
+		'./src/js/**/*.js',
+		'!src/js/vendor/**'
+	] )
 		.pipe( eslint() )
 		.pipe( eslint.format() );
 };
@@ -187,21 +185,11 @@ export const js = () => {
 	// Clean up old files.
 	del( './assets/js/*' );
 
-	return src( 'src/js/*.js', {
-			sourcemaps: true
-		} )
+	return src( './src/js/*.js' )
 		.pipe( plumber( errorHandler ) )
-		.pipe( include( {
-			includePaths: [
-				__dirname + '/src/js',
-				__dirname + '/node_modules'
-			]
-		} ) )
-		.pipe( babel() ) // config is in .babelrc file
-		.pipe( uglify() )
-		.pipe( rename( { suffix: '.min' } ) )
-		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-		.pipe( dest( './assets/js', { sourcemaps: '.' } ) )
+		.pipe( named() )
+		.pipe( webpack( webpackConfig ) )
+		.pipe( dest( './assets/js/' ) )
 		.pipe( server.reload( {
 			match: '**/*.js', // Sourcemap is in stream so match for actual JS files
 			stream: true

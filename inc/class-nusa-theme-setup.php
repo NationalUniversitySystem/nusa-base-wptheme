@@ -111,9 +111,7 @@ class NUSA_Theme_Setup {
 		$theme_uri  = get_stylesheet_directory_uri();
 
 		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/theme.min.css', array(), filemtime( $theme_path . '/assets/css/theme.min.css' ) );
-
-		wp_enqueue_script( 'vendor-scripts', $theme_uri . '/assets/js/vendor.min.js', array( 'jquery' ), filemtime( $theme_path . '/assets/js/vendor.min.js' ), true );
-		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', array( 'jquery', 'vendor-scripts' ), filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
+		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', [], filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
 	}
 
 	/**
