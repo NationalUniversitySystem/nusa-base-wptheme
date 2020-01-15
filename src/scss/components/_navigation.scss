@@ -1,0 +1,30 @@
+.main-navigation {
+  .nav-menu {
+    @include horizontal-list;
+  }
+
+  li {
+    padding: 0 5px;
+
+    &:hover {
+      > ul {
+        display: block;
+      }
+    }
+
+    ul {
+      @include reset-list;
+
+      display: none;
+      left: 0;
+      position: absolute;
+      top: 100%;
+
+      ul {
+        left: 100%;
+        top: 0;
+      }
+    }
+  }
+}
+

@@ -43,11 +43,12 @@
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nusa' ); ?></button>
+				<button class="menu-toggle d-block d-sm-none" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'nusa' ); ?></button>
 				<?php
 				wp_nav_menu( [
-					'theme_location' => 'main-menu',
+					'theme_location' => 'primary-desktop',
 					'menu_id'        => 'primary-menu',
+					'menu_class'     => 'horizontal-list',
 				] );
 				?>
 			</nav><!-- #site-navigation -->
