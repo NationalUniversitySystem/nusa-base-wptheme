@@ -16,7 +16,7 @@ import { getCookie, getParameterByName } from '../theme/functions';
 
 	let trackingObject = {};
 
-	utmParams.forEach( ( utmName ) => {
+	utmParams.forEach( utmName => {
 		let utmCookie = getCookie( utmName + '1' );
 		let utmParam  = getParameterByName( utmName );
 		let utmValue  = utmCookie || utmParam;

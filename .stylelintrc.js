@@ -1,6 +1,7 @@
 module.exports = {
 	"extends": "stylelint-config-recommended-scss",
 	"defaultSeverity": "warning",
+	"ignoreFiles": [ "**/*.js" ],
 	"plugins": [
 		"stylelint-declaration-use-variable",
 		"stylelint-order",
@@ -62,7 +63,8 @@ module.exports = {
 		"at-rule-blacklist": [ "debug" ],
 		"at-rule-empty-line-before": [ "always", {
 			"except": [ "after-same-name" ],
-			"ignore": [ "after-comment", "inside-block" ]
+			"ignore": [ "after-comment", "inside-block" ],
+			"ignoreAtRules": [ "mixin" ]
 		} ],
 		"at-rule-no-vendor-prefix": true,
 		"at-rule-semicolon-newline-after": "always",

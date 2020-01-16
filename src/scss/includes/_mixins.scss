@@ -6,7 +6,6 @@
 
 @mixin horizontal-list {
   @include reset-list;
-
   display: flex;
 
   li {
