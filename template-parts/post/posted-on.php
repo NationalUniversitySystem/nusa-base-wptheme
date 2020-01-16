@@ -23,4 +23,4 @@ $posted_on = sprintf(
 	'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 );
 
-echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

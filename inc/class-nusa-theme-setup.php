@@ -193,22 +193,11 @@ class NUSA_Theme_Setup {
 	 * Makes our site super safe
 	 */
 	public function security_headers() {
-
 		// Enforce the use of HTTPS.
 		header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains' );
 
 		// Prevent Clickjacking.
 		header( 'X-Frame-Options: SAMEORIGIN' );
-
-		// Prevent XSS Attack
-		// Too strict for now.
-		// header( 'Content-Security-Policy: default-src "self";' ); // FF 23+ Chrome 25+ Safari 7+ Opera 19+.
-		// header( 'Content-Security-Policy: default-src https: "unsafe-eval" "unsafe-inline"; object-src "none";' );
-		// header( 'Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/' );
-
-		// Too strict for now.
-		// header( 'X-Content-Security-Policy: default-src "self";' ); // IE 10+.
-		// header( 'X-Content-Security-Policy: default-src https: "unsafe-eval" "unsafe-inline"; object-src "none";' ); // IE 10+.
 
 		// Block Access If XSS Attack Is Suspected.
 		header( 'X-XSS-Protection: 1; mode=block' );
@@ -293,7 +282,6 @@ class NUSA_Theme_Setup {
 	 * @param int   $post_id The post ID.
 	 */
 	public function post_class( $classes = [], $class = [], $post_id = null ) {
-
 		foreach ( $classes as $key => $value ) {
 			if ( strpos( $value, 'post-' ) !== false || strpos( $value, 'status-' ) !== false ) {
 				unset( $classes[ $key ] );
@@ -421,5 +409,4 @@ class NUSA_Theme_Setup {
 
 		return $file;
 	}
-
 }

@@ -8,23 +8,21 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<main id="main" class="site-main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'nusa' ); ?></h1>
-				</header><!-- .page-header -->
+		<section class="error-404 not-found">
+			<header class="page-header">
+				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'nusa' ); ?></h1>
+			</header><!-- .page-header -->
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'nusa' ); ?></p>
+			<div class="page-content">
+				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'nusa' ); ?></p>
 
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+				<?php get_search_form(); ?>
+			</div><!-- .page-content -->
+		</section><!-- .error-404 -->
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();
