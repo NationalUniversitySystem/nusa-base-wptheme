@@ -32,7 +32,7 @@ import { dest, parallel, src, series, watch } from 'gulp';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
-import sassLint from 'gulp-sass-lint';
+import styleLint from 'gulp-stylelint';
 
 // JS related plugins.
 import eslint from 'gulp-eslint';
@@ -101,11 +101,15 @@ const reload = done => {
 export const sassLinter = () => {
 	return src( 'src/scss/**/*.scss' )
 		.pipe( plumber( errorHandler ) )
-		.pipe( sassLint() )
-		.pipe( sassLint.format() )
-		.pipe( sassLint.failOnError() );
+		.pipe( styleLint( {
+			syntax: 'scss',
+			reporters: [ {
+				formatter: 'string',
+				console: true
+			} ]
+		} ) );
 };
-sassLinter.description = 'Lint through all our SASS/SCSS files so our code is consistent across files.';
+sassLinter.description = 'Lint through all our SCSS files so our code is consistent across files.';
 
 /**
  * Task: `css`.

@@ -30,6 +30,13 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-lint": "^1.4.0",
     "node-sass": "^4.13.0",
+    "gulp-stylelint": "^11.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-recommended-scss": "^4.1.0",
+    "stylelint-declaration-use-variable": "^1.7.2",
+    "stylelint-media-use-custom-media": "^1.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.13.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^5.2.1"

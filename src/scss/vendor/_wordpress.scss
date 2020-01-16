@@ -6,14 +6,13 @@
   margin: 5px 20px 20px 0;
 }
 
-.aligncenter,
-div.aligncenter {
+.aligncenter {
   display: block;
-  margin: 5px auto 5px auto;
+  margin: 5px auto;
 }
 
 .alignright {
-  float:right;
+  float: right;
   margin: 5px 0 20px 20px;
 }
 
@@ -22,24 +21,28 @@ div.aligncenter {
   margin: 5px 20px 20px 0;
 }
 
-a img.alignright {
-  float: right;
-  margin: 5px 0 20px 20px;
-}
+a {
+  img {
+    &.alignright {
+      float: right;
+      margin: 5px 0 20px 20px;
+    }
 
-a img.alignnone {
-  margin: 5px 20px 20px 0;
-}
+    &.alignnone {
+      margin: 5px 20px 20px 0;
+    }
 
-a img.alignleft {
-  float: left;
-  margin: 5px 20px 20px 0;
-}
+    &.alignleft {
+      float: left;
+      margin: 5px 20px 20px 0;
+    }
 
-a img.aligncenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    &.aligncenter {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .wp-caption {
@@ -80,23 +83,23 @@ a img.aligncenter {
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-  border: 0;
+  border: none;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
   padding: 0;
-  position: absolute !important;
+  position: absolute !important; // stylelint-disable-line declaration-no-important
   width: 1px;
-  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */ // stylelint-disable-line declaration-no-important
 }
 
 .screen-reader-text:focus {
   background-color: #eee;
-  clip: auto !important;
+  clip: auto !important; // stylelint-disable-line declaration-no-important
   clip-path: none;
-  color: #444;
+  color: #444; // stylelint-disable-line sh-waqar/declaration-use-variable
   display: block;
   font-size: 16px;
   height: auto;
