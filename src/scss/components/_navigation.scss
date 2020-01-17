@@ -1,4 +1,4 @@
-// stylelint-disable no-descending-specificity, selector-max-compound-selectors
+// stylelint-disable selector-max-compound-selectors
 .main-navigation {
   .nav-menu {
     @include horizontal-list;
@@ -6,12 +6,6 @@
 
   li {
     padding: 0 5px;
-
-    &:hover {
-      > ul {
-        display: block;
-      }
-    }
 
     ul {
       @include reset-list;
@@ -23,6 +17,12 @@
       ul {
         left: 100%;
         top: 0;
+      }
+    }
+
+    &:hover {
+      > ul {
+        display: block;
       }
     }
   }

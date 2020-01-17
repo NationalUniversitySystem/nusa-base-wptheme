@@ -21,16 +21,13 @@ module.exports = {
 			"declarations",
 			{
 				"type": "rule",
-				"selector": /^&:\w+/
-			},
-			{
-				"type": "rule",
 				"selector": /^&::\w+/
 			},
 			{
 				"type": "at-rule",
 				"name": "media"
 			},
+			"rules",
 			{
 				"type": "rule",
 				"selector": /^&--\w+/
@@ -39,7 +36,10 @@ module.exports = {
 				"type": "rule",
 				"selector": /^&__\w+/
 			},
-			"rules"
+			{
+				"type": "rule",
+				"selector": /^&:\w+/
+			}
 		],
 		"order/properties-alphabetical-order": true,
 		"scss/at-else-empty-line-before": "never",
@@ -64,7 +64,7 @@ module.exports = {
 		"at-rule-empty-line-before": [ "always", {
 			"except": [ "after-same-name" ],
 			"ignore": [ "after-comment", "inside-block" ],
-			"ignoreAtRules": [ "mixin" ]
+			"ignoreAtRules": [ "font-face", "mixin" ]
 		} ],
 		"at-rule-no-vendor-prefix": true,
 		"at-rule-semicolon-newline-after": "always",
