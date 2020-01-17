@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-This repo is a base theme for starting projects by our Web Dev team. It includes industry and team folder and file structure.
+This repo is a base theme for starting projects by our Web Dev team. It includes files and folder structure based on industry and team standards.
 
 When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, etc inside the theme to reflect the project at hand.
 
@@ -20,12 +20,12 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 ## Available Gulp tasks:
 *Note: You can run `npx gulp --tasks --depth=0` in the command line for a task list and information about them.* :scream:
 
-- `sassLinter` - Lints the SASS files to keep the team working on the project consistent and avoid conflicts.
+- `sassLinter` - Lints the SASS files with [stylelint](https://stylelint.io/) to keep the team working on the project consistent and avoid conflicts.
 - `css` - Run the processing of all SASS files -> CSS to deliver to the user.
-- `jsLint` - Lint the JS files with [ESLint](https://eslint.org/) so that our code is consistent and our team uses up to date code standards.
+- `jsLinter` - Lint the JS files with [ESLint](https://eslint.org/) so that our code is consistent and our team uses up to date code standards.
 - `js` - Process and compile the JavaScript files into our `/assets/` folder for delivery.
 - `styles` - Executes CSS related tasks in **series** order (`sassLinter` -> `css`).
-- `scripts` - Executes JavaScript related tasks in **series** order (`jsLint` -> `js`).
+- `scripts` - Executes JavaScript related tasks in **series** order (`jsLinter` -> `js`).
 - `build` - Executes the `styles` and `scripts` tasks in **parallel** order.
 - `dev` - Runs the `build` task, `browsersync` task, and watches files to continuously run the tasks above when the appropriate files are updated (Defined as the `default` task as well).
   - The `browsersync` task is not exported so that it can be called via the command line.
@@ -34,9 +34,9 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 ---
 
 ## Must includes:
-- Gulp file setup
-- Basic theme setup in `./inc/class-nusa-theme-setup`
-- ESLint and SASSLint rules are based on our team and industry standards, do not change these.
+- Gulp file setup.
+- Basic theme setup in `./inc/class-nusa-theme-setup`.
+- **ESLint** and **stylelint** rules are based on our team and industry standards, do not change these.
 
 ---
 
@@ -71,3 +71,5 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+The [Emoji Key](https://allcontributors.org/docs/en/emoji-key) ✨ (and Contribution Types) can be found on [allcontributors.org](https://allcontributors.org)
