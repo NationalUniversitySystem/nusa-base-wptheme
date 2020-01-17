@@ -1,6 +1,6 @@
 # NUSA WP Base Theme
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This repo is a base theme for starting projects by our Web Dev team. It includes industry and team folder and file structure.
@@ -64,6 +64,7 @@ When starting a project you ***must*** replace any instances of `NUSA`, `nusa`, 
 <table>
   <tr>
     <td align="center"><a href="https://github.com/mestradanu"><img src="https://avatars1.githubusercontent.com/u/44380612?v=4" width="100px;" alt=""/><br /><sub><b>Mike Estrada</b></sub></a><br /><a href="https://github.com/NationalUniversitySystem/nusa-base-wptheme/commits?author=mestradanu" title="Code">💻</a> <a href="#projectManagement-mestradanu" title="Project Management">📆</a> <a href="https://github.com/NationalUniversitySystem/nusa-base-wptheme/pulls?q=is%3Apr+reviewed-by%3Amestradanu" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-mestradanu" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/cmaustnu"><img src="https://avatars1.githubusercontent.com/u/44381935?v=4" width="100px;" alt=""/><br /><sub><b>Chris Maust</b></sub></a><br /><a href="https://github.com/NationalUniversitySystem/nusa-base-wptheme/commits?author=cmaustnu" title="Code">💻</a> <a href="#a11y-cmaustnu" title="Accessibility">️️️️♿️</a></td>
   </tr>
 </table>
 
