@@ -30,11 +30,13 @@
     "gulp-sass": "^4.0.2",
     "gulp-sass-lint": "^1.4.0",
     "node-sass": "^4.13.0",
+    "popper.js": "^1.16.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vinyl-named": "^1.1.0",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
+    "ally.js": "^1.4.1",
     "bootstrap": "^4.4.1",
     "vanilla-lazyload": "^12.4.0"
   },
