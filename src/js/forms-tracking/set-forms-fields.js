@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 import { getCookie, getParameterByName, setInputValue } from '../theme/functions';
-// Setup all process trackers
+// Setup all process trackers.
 ( function() {
 	const utmParams = [
 		'utm_source',

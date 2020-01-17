@@ -18,7 +18,7 @@
 		<?php
 		the_content();
 
-		wp_link_pages([
+		wp_link_pages( [
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nusa' ),
 			'after'  => '</div>',
 		] );
