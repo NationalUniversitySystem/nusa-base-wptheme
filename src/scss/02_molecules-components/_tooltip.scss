@@ -1,0 +1,23 @@
+// Here as base
+.tooltip-content {
+  background: $color-white;
+  border-radius: 3px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .3);
+  color: $color-primary;
+  content: attr(data-tooltip-content);
+  font-size: 12px;
+  font-weight: 400;
+  left: 95%;
+  min-width: 150px;
+  opacity: 0;
+  padding: 8px;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  top: -6px;
+  transform: translateX(-50%) translateY(-100%);
+
+  &.visible {
+    opacity: 1;
+  }
+}

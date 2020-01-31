@@ -1,0 +1,36 @@
+.section {
+  &--parallax {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+
+    @media (min-width: $breakpoint-md-min) {
+      height: 600px;
+    }
+  }
+
+  &__container {
+    align-items: flex-end;
+    display: flex;
+    height: 100%;
+    position: relative;
+
+    @media (min-width: $breakpoint-md-min) {
+      align-items: center;
+    }
+
+    h2 {
+      @include font-size(24);
+      max-width: 550px;
+
+      @media (min-width: $breakpoint-md-min) {
+        @include font-size(30);
+      }
+
+      @media (min-width: $breakpoint-md-min) {
+        @include font-size(42);
+      }
+    }
+  }
+}

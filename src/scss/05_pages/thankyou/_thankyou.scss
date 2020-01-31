@@ -1,0 +1,9 @@
+.hero {
+  .page-slug-contactthankyou & {
+    min-height: 400px;
+
+    @media (min-width: $breakpoint-lg-min) {
+      min-height: 450px;
+    }
+  }
+}

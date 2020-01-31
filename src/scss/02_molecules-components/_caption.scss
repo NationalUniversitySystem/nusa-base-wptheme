@@ -1,0 +1,43 @@
+.caption {
+  bottom: 15px;
+  color: $color-white;
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 100%;
+  z-index: 2;
+
+  @media (min-width: $breakpoint-sm-min) {
+    bottom: 30px;
+    text-shadow: 1px 1px 20px #000;
+    z-index: 0;
+  }
+
+  @media (min-width: $breakpoint-md-min) {
+    font-size: 11px;
+  }
+
+  @media (min-width: $breakpoint-lg-min) {
+    font-size: 12px;
+  }
+
+  strong,
+  em {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+
+    @media (min-width: $breakpoint-sm-min) {
+      font-size: 12px;
+    }
+
+    @media (min-width: $breakpoint-md-min) {
+      font-size: 13px;
+    }
+
+    @media (min-width: $breakpoint-lg-min) {
+      font-size: 14px;
+    }
+  }
+}

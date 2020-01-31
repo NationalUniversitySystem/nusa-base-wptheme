@@ -1,0 +1,47 @@
+.icon {
+  &::after {
+    @extend %icon;
+  }
+
+  &--arrow-left {
+    &::after {
+      content: '\e900';
+    }
+  }
+
+  &--arrow-right {
+    &::after {
+      content: '\e901';
+    }
+  }
+
+  &--chevron-right {
+    &::after {
+      content: '\e905';
+    }
+  }
+
+  &--close {
+    &::after {
+      @extend %icon--close;
+    }
+  }
+
+  &--search {
+    &::after {
+      content: '\e913';
+    }
+  }
+
+  &--question-circle {
+    &::after {
+      @extend %icon--question-circle;
+    }
+  }
+
+  &--margin-left {
+    &::after {
+      margin-left: 16px;
+    }
+  }
+}

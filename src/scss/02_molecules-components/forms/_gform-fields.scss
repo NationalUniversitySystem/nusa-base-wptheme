@@ -1,0 +1,17 @@
+.gform {
+  &_fields {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

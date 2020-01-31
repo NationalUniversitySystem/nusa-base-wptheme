@@ -1,0 +1,122 @@
+%icon {
+  display: inline-block;
+  // font-family: $font-icomoon;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  height: 14px;
+  line-height: 1em;
+  speak: none; // stylelit-disable unknownProperties
+  text-align: center;
+  text-transform: none;
+  vertical-align: text-top;
+  width: 14px;
+}
+
+%icon--inline {
+  font-size: 12px;
+  margin-left: 8px;
+  vertical-align: baseline;
+}
+
+%icon--arrow-left {
+  content: '\e900';
+}
+
+%icon--arrow-right {
+  content: '\e901';
+}
+
+%icon--arrow-up {
+  content: '\e902';
+}
+
+%icon--arrow-down {
+  content: '\e903';
+}
+
+%icon--chevron-left {
+  content: '\e904';
+}
+
+%icon--chevron-right {
+  content: '\e905';
+}
+
+%icon--chevron-up {
+  content: '\e906';
+}
+
+%icon--chevron-down {
+  content: '\e907';
+}
+
+%icon--check-circle {
+  content: '\e908';
+}
+
+%icon--clock {
+  content: '\e915';
+}
+
+%icon--close {
+  content: '\e909';
+}
+
+%icon--close-circle {
+  content: '\e916';
+}
+
+%icon--download {
+  content: '\e90c';
+}
+
+%icon--home {
+  content: '\e914';
+}
+
+%icon--laptop {
+  content: '\e910';
+}
+
+%icon--map-marker {
+  content: '\e911';
+}
+
+%icon--question-circle {
+  content: '\e912';
+}
+
+%icon--phone {
+  content: '\e942';
+}
+
+%icon--menu {
+  content: '\e9db';
+}
+
+%icon--search {
+  content: '\e913';
+}
+
+%icon--circle-facebook {
+  content: '\e999';
+}
+
+%icon--circle-instagram {
+  content: '\e998';
+}
+
+%icon--circle-linkedin {
+  content: '\e90a';
+}
+
+%icon--circle-youtube {
+  content: '\e90b';
+}
+
+%icon--circle-twitter {
+  content: '\e997';
+}

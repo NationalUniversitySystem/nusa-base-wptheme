@@ -1,0 +1,77 @@
+h1 {
+  @extend %heading--primary;
+  font-size: 36px;
+  line-height: 1;
+
+  @media(min-width: $breakpoint-md-min) {
+    font-size: 50px;
+    max-width: 550px;
+  }
+
+  @media(min-width: $breakpoint-lg-min) {
+    font-size: 60px;
+    max-width: 650px;
+  }
+}
+
+h2 {
+  @extend %heading--primary;
+  color: $color-accent;
+  font-size: 30px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+
+  @media(min-width: $breakpoint-lg-min) {
+    font-size: 40px;
+  }
+
+  &.heading {
+    color: $color-primary;
+  }
+}
+
+h3 {
+  @extend %heading--primary;
+  color: $color-primary;
+  font-size: 26px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+
+  @media(min-width: $breakpoint-lg-min) {
+    font-size: 30px;
+  }
+}
+
+h4 {
+  @extend %heading--secondary;
+  color: $color-primary;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+
+  @media(min-width: $breakpoint-lg-min) {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  @extend %heading--secondary;
+  color: $color-primary;
+  font-size: 16px;
+  margin-bottom: 15px;
+
+  @media( min-width: $breakpoint-lg-min ) {
+    font-size: 18px;
+  }
+}
+
+h6 {
+  @extend %heading--secondary;
+  color: $color-primary;
+  font-size: 14px;
+  margin-bottom: 15px;
+
+  @media( min-width: $breakpoint-lg-min ) {
+    font-size: 16px;
+  }
+}

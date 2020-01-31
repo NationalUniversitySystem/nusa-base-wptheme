@@ -1,0 +1,12 @@
+.form {
+  &__description {
+    color: $color-white;
+    display: block;
+    font-size: 12px;
+    margin: 5px 0;
+
+    &.sr-only {
+      margin: 0;
+    }
+  }
+}

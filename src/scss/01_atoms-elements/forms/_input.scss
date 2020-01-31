@@ -1,0 +1,11 @@
+.input {
+  @extend %input;
+  background-color: #fff;
+  color: #24292f; // stylelint-disable-line sh-waqar/declaration-use-variable
+  padding: 16px;
+
+  &:active,
+  &:focus {
+    border-color: $color-grey;
+  }
+}

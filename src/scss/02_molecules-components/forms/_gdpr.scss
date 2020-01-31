@@ -1,0 +1,13 @@
+.gdpr {
+  &_checkbox {
+    .gfield_consent_label { // stylelint-disable-line selector-class-pattern
+      color: $color-white;
+      cursor: pointer;
+
+      a {
+        @include link-underline-reverse($color-accent);
+        color: $color-white;
+      }
+    }
+  }
+}

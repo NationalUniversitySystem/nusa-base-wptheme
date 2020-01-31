@@ -1,0 +1,10 @@
+.form {
+  &__label {
+    left: 24px;
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 16px;
+    transition: .2s;
+  }
+}

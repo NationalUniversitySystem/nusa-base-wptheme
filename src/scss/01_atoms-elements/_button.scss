@@ -1,0 +1,97 @@
+.btn {
+  @extend %btn;
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s ease;
+
+  &--outline {
+    background-color: transparent;
+    border: 2px solid $color-white;
+    color: $color-white;
+    font-weight: 700;
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary;
+    }
+  }
+
+  &--solid {
+    background-color: $color-primary;
+    color: $color-white;
+    font-weight: 700;
+
+    &.hover-accent {
+      &:hover {
+        background: $color-accent;
+        color: $color-primary;
+      }
+    }
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary;
+    }
+  }
+
+  &--accent {
+    background-color: $color-accent;
+    border-radius: 3px;
+    color: $color-white;
+    font-weight: 700;
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary;
+    }
+  }
+
+  &--bg-gold {
+    background: $color-accent;
+    color: $color-white;
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary;
+
+      span {
+        color: $color-primary;
+
+        &::after {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &--scale {
+    &:hover {
+      background-color: $color-primary;
+      transform: scale(.95);
+
+      span {
+        color: $color-white;
+      }
+    }
+  }
+
+  &--program {
+    background: $color-primary;
+    border-radius: 3px;
+    color: $color-white;
+    display: block;
+    font-weight: 500;
+    padding: 16px 24px;
+    text-decoration: none !important; // stylelint-disable-line declaration-no-important
+    transition: all .2s ease-in-out;
+
+    &::after {
+      vertical-align: baseline;
+    }
+
+    &:hover {
+      background-color: $color-accent;
+      color: $color-primary;
+    }
+  }
+}

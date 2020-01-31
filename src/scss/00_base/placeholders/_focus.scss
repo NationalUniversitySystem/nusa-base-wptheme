@@ -1,0 +1,15 @@
+%focus--default {
+  outline: dotted $color-primary 2px;
+  outline-offset: 2px;
+}
+
+%focus--light {
+  @extend %focus--default;
+  outline-color: $color-white;
+}
+
+%focus--large {
+  @extend %focus--default;
+  outline-offset: 4px;
+  outline-width: 4px;
+}

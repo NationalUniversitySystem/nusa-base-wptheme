@@ -1,0 +1,32 @@
+.primary-navigation {
+  a {
+    @extend %navigation-menu-link;
+    color: $color-white;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.5rem;
+    padding: 5px 10px;
+
+    @media (min-width: $breakpoint-md-min) {
+      font-weight: 700;
+      padding: 10px;
+    }
+  }
+
+  .menu-item {
+    @extend %navigation-menu-item;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      background-color: $color-white;
+
+      a {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__menu {
+    @extend %navigation-menu;
+  }
+}

@@ -1,0 +1,35 @@
+.form {
+  &__group {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+
+    .required-label {
+      color: $error;
+      display: inline-block;
+      margin-left: 3px;
+    }
+
+    &--active {
+      .form__label {
+        font-size: 12px;
+        top: 5px;
+      }
+
+      &.has-desc {
+        .form__label {
+          top: 5px;
+        }
+      }
+
+      .input {
+        padding-bottom: 8px;
+        padding-top: 24px;
+      }
+
+      .select {
+        color: $color-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+// Mixin call to create borders with different border widths
+// Note: $color is first parameter but second variable used because most of the time we'll leave the border-width as is.
+@mixin border-color($color: $color-primary, $width: 1px) {
+  border: #{$width} solid #{$color};
+}
+
+@mixin link-underline($color) {
+  position: relative;
+
+  &::before {
+    background-color: $color;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transition: all .3s ease-in-out 0s;
+    visibility: hidden;
+    width: 100%;
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+      visibility: visible;
+    }
+  }
+}
+
+@mixin link-underline-reverse($color) {
+  position: relative;
+
+  &::before {
+    background-color: $color;
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(1);
+    transition: all .3s ease-in-out 0s;
+    visibility: visible;
+    width: 100%;
+  }
+
+  &:hover {
+    color: $color;
+    text-decoration: none;
+
+    &::before {
+      transform: scaleX(0);
+      visibility: hidden;
+    }
+  }
+}
+
+@mixin nav-underline($color) {
+  position: relative;
+
+  &::before {
+    background-color: $color;
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transition: all .3s ease-in-out 0s;
+    visibility: hidden;
+    width: 100%;
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+      visibility: visible;
+    }
+  }
+}
+
+@mixin size($width, $height: $width) {
+  height: $height + px;
+  width: $width + px;
+}
+
+@mixin font-size($size) {
+  $rem-value: $size / 16;
+  $px-value: ($size);
+  font-size: $px-value + px;
+  font-size: $rem-value + rem;
+}

@@ -1,9 +1,3 @@
-// Mixin call to create borders with different border widths
-// Note: $color is first parameter but second variable used because most of the time we'll leave the border-width as is.
-@mixin border-color($color: $color-primary, $width: 1px) {
-  border: #{$width} solid #{$color};
-}
-
 // Loop through all our colors and create our basic utility classes
 @each $name, $color in map-merge($colors, $brand-colors) {
   // Border class

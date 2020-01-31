@@ -1,0 +1,31 @@
+.military {
+  &_checkbox {
+    max-width: 335px;
+
+    .gfield {
+      &_checkbox {
+        padding: 0;
+
+        label {
+          color: $color-white;
+          cursor: pointer;
+        }
+
+        input {
+          margin-right: 5px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .icon {
+      color: $color-accent;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1;
+      margin-left: auto;
+      margin-right: 9px;
+      transform: translateY(-5px);
+    }
+  }
+}
