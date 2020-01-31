@@ -1,0 +1,44 @@
+.gfield {
+  &_error {
+    &.form {
+      &__group {
+        input {
+          border: 1px solid $error;
+        }
+      }
+    }
+
+    select {
+      border: 1px solid $error;
+    }
+
+    &.gdpr {
+      &_checkbox {
+        label,
+        a {
+          color: $error;
+        }
+      }
+    }
+  }
+}
+
+.validation {
+  &_message {
+    color: $error;
+  }
+
+  &_error {
+    color: $color-accent;
+    font-style: italic;
+    margin-bottom: 10px;
+    text-align: center;
+
+    span {
+      color: $color-accent;
+      display: block;
+      font-style: normal;
+      margin-bottom: 5px;
+    }
+  }
+}

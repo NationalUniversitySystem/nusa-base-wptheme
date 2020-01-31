@@ -1,0 +1,15 @@
+.footer-navigation {
+  .menu-item {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__menu {
+    @extend %navigation-menu;
+  }
+}

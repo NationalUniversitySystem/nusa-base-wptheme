@@ -1,0 +1,10 @@
+.logo {
+  height: 100%;
+  max-width: 180px;
+  width: 100%;
+
+  @media (min-width: $breakpoint-md-min) {
+    height: auto;
+    max-width: 250px;
+  }
+}

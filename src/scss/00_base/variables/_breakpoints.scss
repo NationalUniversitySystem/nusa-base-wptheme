@@ -1,0 +1,9 @@
+$breakpoint-sm-min: map-get($grid-breakpoints, sm);
+$breakpoint-md-min: map-get($grid-breakpoints, md);
+$breakpoint-lg-min: map-get($grid-breakpoints, lg);
+$breakpoint-xl-min: map-get($grid-breakpoints, xl);
+
+// Note: Avoid max-width, do mobile first!
+$breakpoint-sm-max: ($breakpoint-md-min - 1);
+$breakpoint-md-max: ($breakpoint-lg-min - 1);
+$breakpoint-lg-max: ($breakpoint-xl-min - 1);

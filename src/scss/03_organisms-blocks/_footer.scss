@@ -1,0 +1,13 @@
+.site-footer {
+  &__copyright {
+    p {
+      color: $color-white;
+      font-size: 14px;
+      text-align: center;
+
+      @media (min-width: $breakpoint-md-min) {
+        text-align: left;
+      }
+    }
+  }
+}

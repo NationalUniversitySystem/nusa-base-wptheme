@@ -2,6 +2,12 @@ html {
   scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-size: 16px;
   font-weight: 400;
@@ -31,20 +37,7 @@ img {
   margin: -1px;
   overflow: hidden;
   padding: 0;
-  position: absolute;
+  position: static;
   width: 1px;
   word-wrap: normal;
-}
-
-// ------------------------------
-// Utility Classes
-// ------------------------------
-@each $key, $value in $colors {
-  .bg--#{$key} {
-    background-color: $value;
-  }
-
-  .text--#{$key} {
-    color: $value;
-  }
 }

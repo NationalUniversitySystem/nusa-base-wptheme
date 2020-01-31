@@ -1,0 +1,19 @@
+%navigation-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+%navigation-menu-item {
+  display: inline-block;
+  position: relative;
+}
+
+%navigation-menu-link {
+  display: block;
+  transition: all .15s ease;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
