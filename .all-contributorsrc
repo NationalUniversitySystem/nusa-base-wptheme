@@ -26,6 +26,16 @@
         "code",
         "a11y"
       ]
+    },
+    {
+      "login": "agameronu",
+      "name": "Alex Gamero",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/44380858?v=4",
+      "profile": "https://github.com/agameronu",
+      "contributions": [
+        "code",
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 7,
