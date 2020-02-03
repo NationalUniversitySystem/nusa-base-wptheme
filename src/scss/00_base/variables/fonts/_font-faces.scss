@@ -1,38 +1,10 @@
-// stylelint-disable sh-waqar/declaration-use-variable, indentation, font-weight-notation, value-list-comma-space-after
-@font-face {
-  font-display: swap;
-  font-family: 'Leitura News Roman 3';
-  font-style: normal;
-  font-weight: normal;
-  src: url('../../fonts/leituranews/LeituraNews-Roman3.woff2') format('woff2'),
-       url('../../fonts/leituranews/LeituraNews-Roman3.woff') format('woff'),
-       url('../../fonts/leituranews/LeituraNews-Roman3.ttf') format('truetype');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../../fonts/opensans/OpenSans-Regular.woff') format('woff'),
-       url('../../fonts/opensans/OpenSans-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../../fonts/opensans/OpenSans-Bold.woff') format('woff'),
-       url('../../fonts/opensans/OpenSans-Bold.ttf') format('truetype');
-}
-
+// stylelint-disable sh-waqar/declaration-use-variable, indentation, value-list-comma-space-after
 @font-face {
   font-display: swap;
   font-family: icomoon;
   font-style: normal;
   font-weight: 400;
-  src: url('../../fonts/icomoon/icomoon.woff?ltucd3') format('woff'),
-       url('../../fonts/icomoon/icomoon.ttf?ltucd3') format('truetype'),
-       url('../../fonts/icomoon/icomoon.svg?ltucd3#icomoon') format('svg');
+  src: url('../../../../../fonts/icomoon/icomoon.woff?ltucd3') format('woff'),
+       url('../../../../../fonts/icomoon/icomoon.ttf?ltucd3') format('truetype'),
+       url('../../../../../fonts/icomoon/icomoon.svg?ltucd3#icomoon') format('svg');
 }

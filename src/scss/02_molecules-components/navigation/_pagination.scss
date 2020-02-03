@@ -1,0 +1,41 @@
+.pagination {
+  margin: 0 auto 60px;
+  text-align: center;
+
+  .page-numbers {
+    color: $color-primary;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1;
+    padding: 10px 13px;
+    transition: all .15s ease;
+
+    &.prev {
+      &:hover {
+        background: none;
+        color: $color-primary;
+        transform: translateX(-3px);
+      }
+    }
+
+    &.next {
+      &:hover {
+        background: none;
+        color: $color-primary;
+        transform: translateX(3px);
+      }
+    }
+
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
+
+  .current {
+    background: $color-primary;
+    color: $color-white;
+  }
+}
