@@ -1,7 +1,4 @@
-// sass-lint:disable-all
-
-/* =WordPress Core
--------------------------------------------------------------- */
+// WordPress Core
 .alignnone {
   margin: 5px 20px 20px 0;
 }
@@ -48,7 +45,7 @@ a {
 .wp-caption {
   background: #fff;
   border: 1px solid #f0f0f0;
-  max-width: 96%; /* Image does not overflow the content area */
+  max-width: 96%; // Image does not overflow the content area
   padding: 5px 3px 10px;
   text-align: center;
 }
@@ -81,7 +78,7 @@ a {
   padding: 0 4px 5px;
 }
 
-/* Text meant only for screen readers. */
+// Text meant only for screen readers.
 .screen-reader-text {
   border: none;
   clip: rect(1px, 1px, 1px, 1px);
@@ -92,7 +89,8 @@ a {
   padding: 0;
   position: absolute !important; // stylelint-disable-line declaration-no-important
   width: 1px;
-  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */ // stylelint-disable-line declaration-no-important
+  word-wrap: normal !important; // stylelint-disable-line declaration-no-important
+  // Many screen reader and browser combinations announce broken words as they would appear visually
 }
 
 .screen-reader-text:focus {
@@ -109,6 +107,5 @@ a {
   text-decoration: none;
   top: 5px;
   width: auto;
-  z-index: 100000;
-  /* Above WP toolbar. */
+  z-index: 100000; // Above WP toolbar.
 }

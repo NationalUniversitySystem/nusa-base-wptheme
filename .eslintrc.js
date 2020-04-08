@@ -2,7 +2,8 @@ module.exports = {
 	"env": {
 		"browser": true,
 		"es6": true,
-		"node": true
+		"node": true,
+		"jquery": true
 	},
 	"extends": [
 		"eslint:recommended",
@@ -13,6 +14,10 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"rules": {
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
 		"complexity": [
 			"warn", {
 				"max": 8

@@ -1,6 +1,6 @@
 /**
-* TAB-ABLE BS4 MODAL
-*/
+ * TAB-ABLE BS4 MODAL
+ */
 ( d => {
 	d.addEventListener( 'keydown', event => {
 		// SETUP INITIAL FOCUS INSIDE MODAL AFTER MODAL IS LAUNCHED.

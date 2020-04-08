@@ -8,21 +8,21 @@
 		}
 
 		// Get image URLs from ID.
-		var imageSources = [
+		const imageSources = [
 			'https://img.youtube.com/vi/' + ytVid.dataset.ytid + '/maxresdefault.jpg',
 			'https://img.youtube.com/vi/' + ytVid.dataset.ytid + '/hqdefault.jpg',
-			'https://img.youtube.com/vi/' + ytVid.dataset.ytid + '/sddefault.jpg'
+			'https://img.youtube.com/vi/' + ytVid.dataset.ytid + '/sddefault.jpg',
 		];
 
 		// Build out markup that will be inserted into yt-embed div.
-		var thumbnailButton = d.createElement( 'div' );
+		const thumbnailButton = d.createElement( 'div' );
 
 		ytVid.classList.add( 'thumbnail' );
 		thumbnailButton.className = 'thumbnail__button';
 
 		// Create image to load.
-		var imageToLoad      = 0;
-		var downloadingImage = new Image();
+		let imageToLoad = 0;
+		const downloadingImage = new Image();
 
 		// onload event has to be defined/attached to the new image before we set the src.
 		downloadingImage.onload = function() {
@@ -31,17 +31,17 @@
 				imageToLoad++;
 			}
 
-			ytVid.style.backgroundImage = 'url("' + imageSources[imageToLoad] + '")';
+			ytVid.style.backgroundImage = 'url("' + imageSources[ imageToLoad ] + '")';
 			ytVid.insertBefore( thumbnailButton, ytVid.firstChild );
 		};
 
-		downloadingImage.src = imageSources[imageToLoad];
+		downloadingImage.src = imageSources[ imageToLoad ];
 
 		ytVid.addEventListener( 'click', function( event ) {
 			event.preventDefault();
 			pauseAllYtVideos();
 
-			var iframe = d.createElement( 'iframe' );
+			const iframe = d.createElement( 'iframe' );
 
 			iframe.setAttribute( 'height', '100%' );
 			iframe.setAttribute( 'width', '100%' );
@@ -59,10 +59,10 @@
 	function pauseAllYtVideos() {
 		const iframes = d.querySelectorAll( 'iframe, embed' );
 
-		iframes.forEach( ( iframe ) => {
+		iframes.forEach( iframe => {
 			iframe.contentWindow.postMessage(
 				'{"event":"command","func":"pauseVideo","args":""}',
-				'*'
+				'*',
 			);
 		} );
 	}

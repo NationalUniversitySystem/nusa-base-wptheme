@@ -5,14 +5,17 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/,
-				use: 'babel-loader'
-			}
-		]
+				use: 'babel-loader',
+			},
+		],
 	},
 	mode: 'production',
 	devtool: 'source-map',
+	externals: {
+		jquery: 'jQuery',
+	},
 	output: {
-		filename: '[name].min.js'
+		filename: '[name].min.js',
 	},
 	optimization: {
 		minimize: true,
@@ -28,6 +31,6 @@ module.exports = {
 	},
 	stats: {
 		chunks: false,
-		entrypoints: false
-	}
+		entrypoints: false,
+	},
 };
