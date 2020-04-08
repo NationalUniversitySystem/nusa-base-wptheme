@@ -1,4 +1,4 @@
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 module.exports = {
 	module: {
@@ -15,9 +15,16 @@ module.exports = {
 		filename: '[name].min.js'
 	},
 	optimization: {
-		minimizer: [ new UglifyJsPlugin( {
-			sourceMap: true
-		} ) ]
+		minimize: true,
+		minimizer: [ new TerserPlugin( {
+			terserOptions: {
+				output: {
+					comments: false,
+				},
+			},
+			extractComments: false,
+			sourceMap: true,
+		} ) ],
 	},
 	stats: {
 		chunks: false,
