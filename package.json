@@ -1,14 +1,32 @@
 {
   "name": "nusa",
   "description": "A custom base WordPress theme designed and developed specifically for NUSA sites.",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "author": "National University System Agency",
   "homepage": "https://www.nusagency.org/",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/NationalUniversitySystem/nusa-base-wptheme.git"
   },
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "contributors": [
+    {
+      "name": "Mike Estrada",
+      "email": "mestrada@nu.edu"
+    },
+    {
+      "name": "Chris Maust",
+      "email": "cmaust@nu.edu"
+    },
+    {
+      "name": "Alex Gamero",
+      "email": "agamero@nu.edu"
+    }
+  ],
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
@@ -42,8 +60,5 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "vanilla-lazyload": "^15.1.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
