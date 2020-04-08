@@ -52,13 +52,13 @@ const server = browserSync.create();
 /**
  * Custom Error Handler.
  *
- * @param Mixed error
+ * @param {Object} error
  */
 const errorHandler = error => {
 	notify.onError( {
 		title: 'Gulp error in ' + error.plugin,
 		message: error.toString(),
-		sound: false
+		sound: false,
 	} )( error );
 };
 
@@ -66,17 +66,18 @@ const errorHandler = error => {
  * Task: `browsersync`.
  *
  * Live Reloads, CSS injections, Localhost tunneling.
- * @link http://www.browsersync.io/docs/options/
+ *
+ * {@link} http://www.browsersync.io/docs/options/
  *
  * BrowserSync options can be overwritten by gulp.config.local.js file.
  *
- * @param {Mixed} done Done.
+ * @param {*} done Done.
  */
 const browsersync = done => {
 	const baseServerConfig = {
 		open: false,
 		injectChanges: true,
-		watchEvents: [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ]
+		watchEvents: [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ],
 	};
 
 	const serverConfig = { ...baseServerConfig, ...config.serverConfig };
@@ -105,8 +106,8 @@ export const sassLinter = () => {
 			syntax: 'scss',
 			reporters: [ {
 				formatter: 'string',
-				console: true
-			} ]
+				console: true,
+			} ],
 		} ) );
 };
 sassLinter.description = 'Lint through all our SCSS files so our code is consistent across files.';
@@ -122,8 +123,10 @@ sassLinter.description = 'Lint through all our SCSS files so our code is consist
  *    5. Renames the CSS file with suffix .min.css
  *    6. Minifies the CSS file and generates *.min.css
  *    7. Injects CSS or reloads the browser via server
+ *
+ * @param {Function} done Callback function for async purposes.
  */
-export const css = ( done ) => {
+export const css = done => {
 	del( './assets/css/*' );
 
 	src( 'src/scss/wp-*.scss', { sourcemaps: true } )
@@ -133,27 +136,27 @@ export const css = ( done ) => {
 		.pipe( dest( './assets/css', { sourcemaps: '.' } ) );
 
 	src( [
-			'src/scss/*.scss',
-			'!src/scss/wp-*.scss'
-		], { sourcemaps: true } )
+		'src/scss/*.scss',
+		'!src/scss/wp-*.scss',
+	], { sourcemaps: true } )
 		.pipe( plumber( errorHandler ) )
 		.pipe( sass( { outputStyle: 'expanded' } ).on( 'error', sass.logError ) )
 		.pipe( autoprefixer( {
-			cascade: false
+			cascade: false,
 		} ) )
 		.pipe( cleanCSS( {
 			level: {
 				2: {
 					all: false,
 					mergeIntoShorthands: true,
-					mergeMedia: true
-				}
-			}
+					mergeMedia: true,
+				},
+			},
 		} ) )
 		.pipe( rename( { suffix: '.min' } ) )
 		.pipe( dest( './assets/css', { sourcemaps: '.' } ) )
 		.pipe( server.stream( {
-			match: '**/*.css' // Sourcemap is in stream so match for actual CSS files
+			match: '**/*.css', // Sourcemap is in stream so match for actual CSS files
 		} ) );
 
 	done();
@@ -169,7 +172,7 @@ css.description = 'Compress, clean, etc our theme CSS files.';
 export const jsLinter = () => {
 	return src( [
 		'./src/js/**/*.js',
-		'!src/js/vendor/**'
+		'!src/js/vendor/**',
 	] )
 		.pipe( eslint() )
 		.pipe( eslint.format() );
@@ -196,7 +199,7 @@ export const js = () => {
 		.pipe( dest( './assets/js/' ) )
 		.pipe( server.reload( {
 			match: '**/*.js', // Sourcemap is in stream so match for actual JS files
-			stream: true
+			stream: true,
 		} ) );
 };
 js.description = 'Run all JS compression and sourcemap work.';

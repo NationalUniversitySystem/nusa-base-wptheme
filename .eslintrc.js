@@ -2,17 +2,22 @@ module.exports = {
 	"env": {
 		"browser": true,
 		"es6": true,
-		"node": true
+		"node": true,
+		"jquery": true
 	},
 	"extends": [
 		"eslint:recommended",
-		"wordpress"
+		"plugin:@wordpress/eslint-plugin/recommended-with-formatting"
 	],
 	"parserOptions": {
-		"ecmaVersion": 2017,
+		"ecmaVersion": 2018,
 		"sourceType": "module"
 	},
 	"rules": {
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
 		"complexity": [
 			"warn", {
 				"max": 8
