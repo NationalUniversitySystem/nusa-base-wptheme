@@ -1,22 +1,24 @@
 /* eslint-disable no-unused-vars */
 /**
  * Gets the parameter from the URL
+ *
+ * @param {string} parameterName Name of the parameter we are trying to fetch.
  */
 export const getParameterByName = function( parameterName ) {
 	parameterName = parameterName.replace( /[[]/, '\\[' ).replace( /[\]]/, '\\]' );
 
-	var regex   = new RegExp( '[\\?&]' + parameterName + '=([^&#]*)' ),
-		results = regex.exec( location.search );
+	const regex   = new RegExp( '[\\?&]' + parameterName + '=([^&#]*)' );
+	const results = regex.exec( location.search );
 
-	return results === null ? '' : decodeURIComponent( results[1].replace( /\+/g, ' ' ) );
+	return results === null ? '' : decodeURIComponent( results[ 1 ].replace( /\+/g, ' ' ) );
 };
 
 export const getCookie = function( cookieName ) {
-	var name        = cookieName + '=';
-	var cookieArray = document.cookie.split( ';' );
+	const name        = cookieName + '=';
+	const cookieArray = document.cookie.split( ';' );
 
-	for ( var i = 0; i < cookieArray.length; i++ ) {
-		var c = cookieArray[i];
+	for ( let i = 0; i < cookieArray.length; i++ ) {
+		let c = cookieArray[ i ];
 		while ( c.charAt( 0 ) === ' ' ) {
 			c = c.substring( 1 );
 		}
@@ -28,14 +30,14 @@ export const getCookie = function( cookieName ) {
 };
 
 export const getDomain = function() {
-	var hostName = location.host;
-	var domain = hostName;
+	const hostName = location.host;
+	let domain = hostName;
 
 	if ( hostName !== null ) {
-		var parts = hostName.split( '.' ).reverse();
+		const parts = hostName.split( '.' ).reverse();
 
 		if ( parts !== null && parts.length > 1 ) {
-			domain = '.' + parts[1] + '.' + parts[0];
+			domain = '.' + parts[ 1 ] + '.' + parts[ 0 ];
 		}
 	}
 
@@ -47,7 +49,7 @@ export const getDomain = function() {
  *
  * @param {string} inputSelector Input you want to set a value for (or parent of input).
  * @param {string} inputValue Value we are setting for the in put.
- * @param {dom element} inputParent The parent of the input in order to narrow the selection (should probably be a form dom element).
+ * @param {HTMLElement} inputParent The parent of the input in order to narrow the selection (should probably be a form dom element).
  */
 export const setInputValue = function( inputSelector, inputValue, inputParent ) {
 	if ( 'undefined' === typeof inputParent ) {
@@ -55,13 +57,13 @@ export const setInputValue = function( inputSelector, inputValue, inputParent ) 
 	}
 
 	// Check the input selector exists.
-	var element = inputParent.querySelector( inputSelector );
+	let element = inputParent.querySelector( inputSelector );
 
 	// Make sure there is only one of the inputSelector and there was a value to set.
 	if ( null === element || 'undefined' === typeof inputValue || '' === inputValue ) {
 		return;
 	} else if ( element.length > 1 ) {
-		element = element[0];
+		element = element[ 0 ];
 	}
 
 	// Make sure the input selector is an actual INPUT tag type, if not, use it to find it inside itself.
@@ -79,17 +81,17 @@ export const setInputValue = function( inputSelector, inputValue, inputParent ) 
 // leading edge, instead of the trailing.
 // Credit to: https://davidwalsh.name/javascript-debounce-function
 export const debounce = function( func, wait, immediate ) {
-	var timeout;
+	let timeout;
 	return function() {
-		var context = this;
-		var args = arguments;
-		var later = function() {
+		const context = this;
+		const args = arguments;
+		const later = function() {
 			timeout = null;
 			if ( ! immediate ) {
 				func.apply( context, args );
 			}
 		};
-		var callNow = immediate && ! timeout;
+		const callNow = immediate && ! timeout;
 		clearTimeout( timeout );
 		timeout = setTimeout( later, wait );
 		if ( callNow ) {
@@ -101,8 +103,8 @@ export const debounce = function( func, wait, immediate ) {
 /**
  * Get a specific class based on a comma separated string
  *
- * @param classPartial Partial class name to search classList for
- * @param classList    String of classes
+ * @param {string} classPartial Partial class name to search classList for
+ * @param {string} classList String of classes
  */
 export const getClass = function( classPartial, classList ) {
 	// Incase an array is passed in.

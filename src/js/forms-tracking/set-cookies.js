@@ -2,11 +2,11 @@
 import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 // Setup all process trackers
 ( function() {
-	var cookieDomain = getDomain();
+	const cookieDomain = getDomain();
 
 	// When a user first arrives to the site, track how and where they landed on the site.
-	var initialReferrerCookie = getCookie( 'initial_referrer' );
-	var landingPageCookie     = getCookie( 'initial_landing_page' );
+	let initialReferrerCookie = getCookie( 'initial_referrer' );
+	const landingPageCookie     = getCookie( 'initial_landing_page' );
 
 	// Make sure this was not a direct visit or the referrer is not from the same URL.
 	if ( '' === initialReferrerCookie && '' !== document.referrer && -1 === document.referrer.indexOf( location.protocol + '//' + location.host ) ) {
@@ -18,13 +18,13 @@ import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 		document.cookie = 'initial_landing_page=' + location.host + location.pathname + '; path=/; Domain=' + cookieDomain;
 	}
 
-	var domainRegEx = /^(http|https):\/\/([a-zA-Z0-9\-\.]|)+(bing|yahoo|google|duckduckgo|ask|aol|startpage|excite|lycos)+\.([a-z][a-z][a-z])((\s|\/)([^\r\n]*))?$/ig; // eslint-disable-line no-useless-escape
-	var domainMatch = domainRegEx.test( initialReferrerCookie );
+	const domainRegEx = /^(http|https):\/\/([a-zA-Z0-9\-\.]|)+(bing|yahoo|google|duckduckgo|ask|aol|startpage|excite|lycos)+\.([a-z][a-z][a-z])((\s|\/)([^\r\n]*))?$/ig; // eslint-disable-line no-useless-escape
+	const domainMatch = domainRegEx.test( initialReferrerCookie );
 
 	// If the visitor landing on the site from one of the domain we want to capture,
 	// set a cookie for the referrer's domain.
 	if ( domainMatch ) {
-		var domainMatchUrlCookie = getCookie( 'referringDomain' );
+		const domainMatchUrlCookie = getCookie( 'referringDomain' );
 		if ( '' === domainMatchUrlCookie ) {
 			document.cookie = 'referringDomain=' + initialReferrerCookie.match( domainRegEx ) + '; path=/; Domain=' + cookieDomain;
 		}
@@ -34,25 +34,25 @@ import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 	const gclidCookie = getCookie( 'gclid' );
 	const gclidParam  = getParameterByName( 'gclid' );
 	if ( '' === gclidCookie && '' !== gclidParam ) {
-		var gclidDate = new Date();
+		const gclidDate = new Date();
 		gclidDate.setTime( gclidDate.getTime() + ( 90 * 24 * 60 * 60 * 1000 ) );
-		var gclidExpires = '' + gclidDate.toGMTString();
+		const gclidExpires = '' + gclidDate.toGMTString();
 		document.cookie = 'gclid=' + gclidParam + '; expires=' + gclidExpires + ';path=/';
 	}
 
 	/**
 	 * The big show
 	 */
-	var source   = getParameterByName( 'utm_source' );
-	var medium   = getParameterByName( 'utm_medium' );
-	var term     = getParameterByName( 'utm_term' );
-	var content  = getParameterByName( 'utm_content' );
-	var campaign = getParameterByName( 'utm_campaign' );
-	var track    = getParameterByName( 'track' );
+	const source   = getParameterByName( 'utm_source' );
+	const medium   = getParameterByName( 'utm_medium' );
+	const term     = getParameterByName( 'utm_term' );
+	const content  = getParameterByName( 'utm_content' );
+	const campaign = getParameterByName( 'utm_campaign' );
+	const track    = getParameterByName( 'track' );
 
-	var exDate = new Date();
+	const exDate = new Date();
 	exDate.setDate( exDate.getDate() + 30 );
-	var expirationTime = exDate.toUTCString();
+	const expirationTime = exDate.toUTCString();
 
 	if ( source !== '' || medium !== '' || term !== '' || content !== '' || campaign !== '' || track !== '' ) {
 		document.cookie = 'utm_source1=; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
@@ -80,7 +80,6 @@ import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 		if ( track !== '' ) {
 			document.cookie = 'track1=' + track + '; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
 		}
-
 	} else if ( domainMatch === true ) {
 		document.cookie = 'utm_source1=; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
 		document.cookie = 'utm_medium1=; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
@@ -89,14 +88,13 @@ import { getDomain, getCookie, getParameterByName } from '../theme/functions';
 		document.cookie = 'utm_campaign1=; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
 		document.cookie = 'track1=OrganicSearch; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
 		document.cookie = 'organicCookie=OrganicSearch; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;
-
 	} else {
-		var cSource1   = getCookie( 'utm_source1' );
-		var cMedium1   = getCookie( 'utm_medium1' );
-		var cTerm1     = getCookie( 'utm_term1' );
-		var cContent1  = getCookie( 'utm_content1' );
-		var cCampaign1 = getCookie( 'utm_campaign1' );
-		var cTrack1    = getCookie( 'track1' );
+		const cSource1   = getCookie( 'utm_source1' );
+		const cMedium1   = getCookie( 'utm_medium1' );
+		const cTerm1     = getCookie( 'utm_term1' );
+		const cContent1  = getCookie( 'utm_content1' );
+		const cCampaign1 = getCookie( 'utm_campaign1' );
+		const cTrack1    = getCookie( 'track1' );
 
 		if ( cSource1 !== '' || cMedium1 !== '' || cTerm1 !== '' || cContent1 !== '' || cCampaign1 !== '' || cTrack1 !== '' ) {
 			document.cookie = 'utm_source1=' + cSource1 + '; expires=' + expirationTime + '; path=/; Domain=' + cookieDomain;

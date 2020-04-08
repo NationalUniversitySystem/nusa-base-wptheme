@@ -18,12 +18,10 @@ import { getClass } from '../theme/functions';
 
 				// Hide all child-menus by default.
 				d.querySelectorAll( '.sub-menu' ).forEach( subMenu => {
-
 					// If the child-menu has no children in focus, hide it.
 					if ( subMenu.contains( document.activeElement ) === false ) {
 						subMenu.style.display = '';
 					}
-
 				} );
 
 				// If the parent li of the current anchor being focus has children.
