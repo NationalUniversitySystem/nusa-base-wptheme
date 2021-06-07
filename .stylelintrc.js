@@ -60,7 +60,7 @@ module.exports = {
 				]
 			}
 		] ],
-		"at-rule-blacklist": [ "debug" ],
+		"at-rule-disallowed-list": [ "debug" ],
 		"at-rule-empty-line-before": [ "always", {
 			"except": [ "after-same-name" ],
 			"ignore": [ "after-comment", "inside-block" ],
@@ -87,7 +87,7 @@ module.exports = {
 			"ignore": [ "after-comment" ]
 		} ],
 		"declaration-no-important": true,
-		"declaration-property-value-blacklist": {
+		"declaration-property-value-disallowed-list": {
 			"/^border$/": [ "0" ]
 		},
 		"font-family-name-quotes": "always-where-recommended",
@@ -98,7 +98,7 @@ module.exports = {
 		"function-comma-space-before": "never",
 		"function-parentheses-space-inside": "never",
 		"function-url-quotes": "always",
-		"function-url-scheme-blacklist": [
+		"function-url-scheme-disallowed-list": [
 			"/^ftp/",
 			"/^http/"
 		],
@@ -114,7 +114,7 @@ module.exports = {
 			]
 		} ],
 		"media-feature-name-no-vendor-prefix": true,
-		"media-feature-name-whitelist": "min-width",
+		"media-feature-name-allowed-list": "min-width",
 		"no-eol-whitespace": true,
 		"no-empty-first-line": true,
 		"no-empty-source": null,
@@ -144,7 +144,7 @@ module.exports = {
 		"string-quotes": "single",
 		"unit-case": "lower",
 		"unit-no-unknown": true,
-		"unit-whitelist": [
+		"unit-allowed-list": [
 			"ch", "em", "ex", "rem",
 			"cm", "in", "mm", "pc", "pt", "px", "q",
 			"vh", "vw", "vmin", "vmax",
