@@ -5,14 +5,9 @@
 @import 'node_modules/bootstrap/scss/functions';
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/mixins';
-@import 'node_modules/bootstrap/scss/reboot';
-@import 'node_modules/bootstrap/scss/grid';
 @import 'node_modules/bootstrap/scss/tables';
 @import 'node_modules/bootstrap/scss/tooltip';
 @import 'node_modules/bootstrap/scss/transitions';
-@import 'node_modules/bootstrap/scss/utilities/display';
-@import 'node_modules/bootstrap/scss/utilities/flex';
-@import 'node_modules/bootstrap/scss/utilities/spacing';
 @import 'vendor/wordpress';
 
 // ------------------------------
@@ -22,10 +17,10 @@
 @import '00_base/variables/colors/utility-colors';
 @import '00_base/variables/fonts/font-faces';
 @import '00_base/variables/fonts/fonts';
+@import '00_base/variables/fonts/font-sizes';
 @import '00_base/variables/breakpoints';
 @import '00_base/animations';
 @import '00_base/mixins';
-@import '00_base/global';
 @import '00_base/utility-classes';
 @import '00_base/placeholders/button';
 @import '00_base/placeholders/focus';
