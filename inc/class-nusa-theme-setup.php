@@ -31,9 +31,6 @@ class NUSA_Theme_Setup {
 	 * Defines all the WordPress actions used by this theme.
 	 */
 	private function add_actions() {
-		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ], 99 );
-		add_action( 'script_loader_tag', [ $this, 'do_script_loader_tag' ], 10, 3 );
 		add_action( 'wp_head', [ $this, 'add_theme_color' ] );
 		add_action( 'init', [ $this, 'add_excerpts' ], 100 );
 		add_action( 'send_headers', [ $this, 'security_headers' ], 1 );
@@ -89,67 +86,6 @@ class NUSA_Theme_Setup {
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Enqueue Admin Assets
-	 *
-	 * Enqueues the necessary css and js files when the WordPress admin is loaded.
-	 */
-	public function enqueue_admin_assets() {
-		$theme_path = get_template_directory();
-		$theme_uri  = get_stylesheet_directory_uri();
-
-		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/wp-admin.min.css', [], filemtime( $theme_path . '/assets/css/theme.min.css' ) );
-		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/wp-admin.min.js', [ 'jquery', 'media-upload' ], filemtime( $theme_path . '/assets/js/wp-admin.min.js' ), true );
-	}
-
-	/**
-	 * Enqueue Assets
-	 *
-	 * Enqueues the necessary css and js files when the theme is loaded.
-	 */
-	public function enqueue_assets() {
-		$theme_path = get_template_directory();
-		$theme_uri  = get_stylesheet_directory_uri();
-
-		wp_enqueue_style( 'nusa', $theme_uri . '/assets/css/theme.min.css', [], filemtime( $theme_path . '/assets/css/theme.min.css' ) );
-
-		wp_enqueue_script( 'polyfill-service', 'https://polyfill.io/v3/polyfill.min.js?flags=gated&features=Array.prototype.forEach%2CNodeList.prototype.forEach%2CElement.prototype.matches%2CElement.prototype.closest%2Cfetch%2CHTMLTemplateElement', [], '3.0.0', true );
-		wp_enqueue_script( 'nusa', $theme_uri . '/assets/js/theme.min.js', [ 'polyfill-service' ], filemtime( $theme_path . '/assets/js/theme.min.js' ), true );
-	}
-
-	/**
-	 * Do Script Loader Tag
-	 * - For organization purposes, this only handles the theme scripts.
-	 *   Each plugin should handle their own scripts loading.
-	 *
-	 * Allows enqueued scripts to be loaded asynchronously, thus preventing the
-	 * page from being blocked by js calls.
-	 *
-	 * @param  string $tag    The <script> tag for the enqueued script.
-	 * @param  string $handle The script's registered handle.
-	 * @param  string $src    The script's source URL.
-	 *
-	 * @return string The formatted HTML script tag of the given enqueued script.
-	 */
-	public function do_script_loader_tag( $tag, $handle, $src ) {
-		// The handles of the enqueued scripts we want to async.
-		$async_scripts = [];
-		if ( in_array( $handle, $async_scripts, true ) ) {
-			return str_replace( ' src', ' async="async" src', $tag );
-		}
-
-		// The handles of the enqueued scripts we want to defer.
-		$defer_scripts = [
-			'nusa',
-			'wp-embed',
-		];
-		if ( in_array( $handle, $defer_scripts, true ) ) {
-			return str_replace( ' src', ' defer="defer" src', $tag );
-		}
-
-		return $tag;
 	}
 
 	/**
