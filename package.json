@@ -11,7 +11,10 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gulp": "gulp"
+    "scripts": "gulp scripts",
+    "styles": "gulp styles",
+    "develop": "gulp dev",
+    "build": "gulp build"
   },
   "contributors": [
     {
