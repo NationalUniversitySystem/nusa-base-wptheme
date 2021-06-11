@@ -72,6 +72,7 @@ class NUSA_Assets {
 
 				// Add full path to urls.
 				$critical_css = str_replace( 'url(../../images', 'url(' . get_template_directory_uri() . '/images', $critical_css );
+				$critical_css = str_replace( 'url(../../fonts', 'url(' . get_template_directory_uri() . '/fonts', $critical_css );
 
 				set_transient( 'critical_css_mod_time', $critical_css_mod_time );
 				set_transient( 'critical_css', $critical_css );
@@ -91,14 +92,14 @@ class NUSA_Assets {
 	public function enqueue_admin_assets() {
 		wp_enqueue_style(
 			'nusa',
-			get_stylesheet_directory_uri() . '/assets/css/wp-admin.min.css',
+			get_template_directory_uri() . '/assets/css/wp-admin.min.css',
 			[],
 			filemtime( get_template_directory() . '/assets/css/wp-admin.min.css' )
 		);
 
 		wp_enqueue_script(
 			'nusa',
-			get_stylesheet_directory_uri() . '/assets/js/wp-admin.min.js',
+			get_template_directory_uri() . '/assets/js/wp-admin.min.js',
 			[ 'jquery', 'media-upload' ],
 			filemtime( get_template_directory() . '/assets/js/wp-admin.min.js' ),
 			true
@@ -112,7 +113,7 @@ class NUSA_Assets {
 	 */
 	public function enqueue_assets() {
 		$theme_path = get_template_directory();
-		$theme_uri  = get_stylesheet_directory_uri();
+		$theme_uri  = get_template_directory_uri();
 
 		if ( ! $this->critical_css ) {
 			wp_enqueue_style(
